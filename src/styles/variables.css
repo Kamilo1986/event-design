@@ -1,0 +1,57 @@
+:root {
+  /* Colores corporativos */
+  --olive-900: #1f2e02;
+  --olive-800: #2b3f04;
+  --olive-700: #324a03; /* VERDE PRINCIPAL */
+  --olive-600: #4a6506;
+
+  /* Neutrales */
+  --dark: #111111;
+  --light: #ffffff;
+}
+#services {
+  background: linear-gradient(
+    to bottom,
+    #f7f8f4,
+    #ffffff
+  );
+}
+
+#services h2 {
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: var(--olive-900);
+}
+
+/* Card */
+.service-card {
+  height: 100%;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    var(--olive-700),
+    var(--olive-900)
+  );
+  color: white;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Hover elegante */
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 65px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenido */
+.service-card h5 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.service-card p {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
