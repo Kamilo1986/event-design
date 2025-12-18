@@ -1,3 +1,5 @@
 [build]
+  base = "event-design"
   command = "npm run build"
-  publish = "dist"
+  publish = "event-design/dist"
+  functions = "event-design/netlify/functions"
