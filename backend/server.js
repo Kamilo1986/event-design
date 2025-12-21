@@ -14,15 +14,23 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Conexión a MySQL
-const db = await mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-});
+const connectToDB = async () => {
+  try {
+    const db = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+    });
+    console.log("Conexión a MySQL establecida ✅");
+    return db;
+  } catch (error) {
+    console.error("Error de conexión a la base de datos:", error);
+    throw error;
+  }
+};
 
-console.log("Conexión a MySQL establecida ✅");
-
+const db = await connectToDB();
 // Configuración de correo
 const transporter = nodemailer.createTransport({
   service: "gmail",
