@@ -31,20 +31,24 @@ const connectToDB = async () => {
 };
 
 const db = await connectToDB();
-// Configuración de correo
+
+// Configuración de correo usando SMTP seguro
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // SSL
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    pass: process.env.EMAIL_PASS, // usa contraseña de aplicación si Gmail tiene 2FA
   },
 });
 
+// Endpoint para contacto
 app.post("/api/contact", async (req, res) => {
   const { nombre, email, telefono, tipoEvento, cantidad, descripcion } = req.body;
 
   try {
-    // 1️⃣ Guardar en BD
+    // Guardar en BD
     await db.execute(
       `INSERT INTO contactos 
        (nombre, email, telefono, tipo_evento, cantidad_personas, descripcion)
@@ -52,16 +56,16 @@ app.post("/api/contact", async (req, res) => {
       [nombre, email, telefono, tipoEvento, cantidad, descripcion]
     );
 
-    // 2️⃣ RESPONDER INMEDIATO AL FRONTEND ✅
+    // Responder al frontend inmediatamente
     res.json({
       success: true,
       message: "Solicitud recibida correctamente",
     });
 
-    // 3️⃣ Enviar correo EN SEGUNDO PLANO
+    // Enviar correo en segundo plano
     transporter.sendMail({
       from: `"Event Design" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER, // tu correo para recibir las solicitudes
       replyTo: email,
       subject: "Nueva solicitud de cotización",
       html: `
@@ -73,6 +77,8 @@ app.post("/api/contact", async (req, res) => {
         <p><strong>Cantidad de personas:</strong> ${cantidad}</p>
         <p><strong>Descripción:</strong> ${descripcion}</p>
       `,
+    }).then(() => {
+      console.log("Correo enviado ✅");
     }).catch(err => console.error("Error enviando correo:", err));
 
   } catch (error) {
@@ -84,8 +90,22 @@ app.post("/api/contact", async (req, res) => {
   }
 });
 
+// Test de correo rápido
+app.get("/test-email", async (req, res) => {
+  try {
+    await transporter.sendMail({
+      from: `"Event Design" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER,
+      subject: "Prueba de correo desde Render",
+      html: "<h1>Esto es una prueba de correo ✅</h1>",
+    });
+    res.send("Correo enviado correctamente ✅");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error enviando correo ❌");
+  }
+});
+
 app.get("/", (req, res) => res.send("Backend funcionando ✅"));
 
-app.listen(PORT, () =>
-console.log(`Server running on port ${PORT}`)
-);
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
