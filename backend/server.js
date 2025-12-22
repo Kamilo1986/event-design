@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Conexión a MySQL
+// Función para crear conexión a MySQL
 const connectToDB = async () => {
   try {
     const db = await mysql.createConnection({
@@ -30,8 +30,6 @@ const connectToDB = async () => {
   }
 };
 
-const db = await connectToDB();
-
 // Configuración de correo usando SMTP seguro
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -39,7 +37,7 @@ const transporter = nodemailer.createTransport({
   secure: true, // SSL
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS, // usa contraseña de aplicación si Gmail tiene 2FA
+    pass: process.env.EMAIL_PASS, // contraseña de aplicación si Gmail tiene 2FA
   },
 });
 
@@ -47,7 +45,11 @@ const transporter = nodemailer.createTransport({
 app.post("/api/contact", async (req, res) => {
   const { nombre, email, telefono, tipoEvento, cantidad, descripcion } = req.body;
 
+  let db;
   try {
+    // Crear conexión por request
+    db = await connectToDB();
+
     // Guardar en BD
     await db.execute(
       `INSERT INTO contactos 
@@ -57,15 +59,12 @@ app.post("/api/contact", async (req, res) => {
     );
 
     // Responder al frontend inmediatamente
-    res.json({
-      success: true,
-      message: "Solicitud recibida correctamente",
-    });
+    res.json({ success: true, message: "Solicitud recibida correctamente" });
 
     // Enviar correo en segundo plano
     transporter.sendMail({
       from: `"Event Design" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER, // tu correo para recibir las solicitudes
+      to: process.env.EMAIL_USER,
       replyTo: email,
       subject: "Nueva solicitud de cotización",
       html: `
@@ -77,20 +76,18 @@ app.post("/api/contact", async (req, res) => {
         <p><strong>Cantidad de personas:</strong> ${cantidad}</p>
         <p><strong>Descripción:</strong> ${descripcion}</p>
       `,
-    }).then(() => {
-      console.log("Correo enviado ✅");
-    }).catch(err => console.error("Error enviando correo:", err));
+    }).then(() => console.log("Correo enviado ✅"))
+      .catch(err => console.error("Error enviando correo:", err));
 
   } catch (error) {
     console.error(error);
-    res.status(500).json({
-      success: false,
-      message: "Error al procesar la solicitud",
-    });
+    res.status(500).json({ success: false, message: "Error al procesar la solicitud" });
+  } finally {
+    if (db) await db.end(); // cerrar conexión
   }
 });
 
-// Test de correo rápido
+// Endpoint para probar correo
 app.get("/test-email", async (req, res) => {
   try {
     await transporter.sendMail({
@@ -106,6 +103,8 @@ app.get("/test-email", async (req, res) => {
   }
 });
 
+// Endpoint raíz
 app.get("/", (req, res) => res.send("Backend funcionando ✅"));
 
+// Iniciar servidor
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
