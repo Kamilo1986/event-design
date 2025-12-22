@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/ContactForm.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 // Importa todas las imágenes
 import hero1 from "../assets/hero1.jpeg";
@@ -29,6 +31,7 @@ const images = [
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0); // Carrusel
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
@@ -43,33 +46,33 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-  try {
-    await fetch("http://localhost:5000/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData)
-    });
+    try {
+      await fetch("https://event-design-backend.onrender.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
 
-    setSubmitted(true);
-    setFormData({
-      nombre: "",
-      email: "",
-      telefono: "",
-      tipoEvento: "",
-      cantidad: "",
-      descripcion: ""
-    });
-  } catch (error) {
-    console.error(error);
-  } finally {
-    setLoading(false);
-  }
-};
-
+      setSubmitted(true);
+      setFormData({
+        nombre: "",
+        email: "",
+        telefono: "",
+        tipoEvento: "",
+        cantidad: "",
+        descripcion: ""
+      });
+    } catch (error) {
+      console.error(error);
+      alert("Error al enviar la solicitud. Intenta de nuevo.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (submitted) {
@@ -78,86 +81,30 @@ const ContactForm = () => {
     }
   }, [submitted]);
 
+  // Funciones del carrusel
+  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  const nextSlide = () => setCurrentSlide((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+
   return (
-    <section id="contact" className="contact-section">
+    <section id="contact" className="contact-section py-5">
       <div className="container">
         <h2 className="contact-title text-center mb-5">Cotiza tu Evento</h2>
+        <div className="row justify-content-center align-items-start gap-4">
 
-        <div className="contact-wrapper d-flex flex-wrap justify-content-center align-items-start gap-5">
-          
           {/* Formulario */}
-          <div className="form-container col-lg-5">
+          <div className="col-12 col-lg-5">
             {!submitted ? (
               <form className="contact-form" onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="nombre"
-                    value={formData.nombre}
-                    onChange={handleChange}
-                    className="premium-input"
-                    placeholder="Nombre"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="premium-input"
-                    placeholder="Email"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="tel"
-                    name="telefono"
-                    value={formData.telefono}
-                    onChange={handleChange}
-                    className="premium-input"
-                    placeholder="Teléfono"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="tipoEvento"
-                    value={formData.tipoEvento}
-                    onChange={handleChange}
-                    className="premium-input"
-                    placeholder="Tipo de evento"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="number"
-                    name="cantidad"
-                    value={formData.cantidad}
-                    onChange={handleChange}
-                    className="premium-input"
-                    placeholder="Cantidad de personas"
-                  />
-                </div>
-                <div className="form-group">
-                  <textarea
-                    name="descripcion"
-                    value={formData.descripcion}
-                    onChange={handleChange}
-                    className="premium-input"
-                    placeholder="Descripción del evento"
-                    rows="4"
-                  ></textarea>
-                </div>
-                <div className="form-group text-center">
-                  <button type="submit" className="btn-olive" disabled={loading}>
-  {loading ? "Enviando..." : "Enviar solicitud"}
-</button>
-
+                <input type="text" name="nombre" value={formData.nombre} onChange={handleChange} className="premium-input mb-3" placeholder="Nombre" required />
+                <input type="email" name="email" value={formData.email} onChange={handleChange} className="premium-input mb-3" placeholder="Email" required />
+                <input type="tel" name="telefono" value={formData.telefono} onChange={handleChange} className="premium-input mb-3" placeholder="Teléfono" required />
+                <input type="text" name="tipoEvento" value={formData.tipoEvento} onChange={handleChange} className="premium-input mb-3" placeholder="Tipo de evento" required />
+                <input type="number" name="cantidad" value={formData.cantidad} onChange={handleChange} className="premium-input mb-3" placeholder="Cantidad de personas" />
+                <textarea name="descripcion" value={formData.descripcion} onChange={handleChange} className="premium-input mb-3" placeholder="Descripción del evento" rows="4"></textarea>
+                <div className="text-center">
+                  <button type="submit" className="btn-olive w-100" disabled={loading}>
+                    {loading ? "Enviando..." : "Enviar solicitud"}
+                  </button>
                 </div>
               </form>
             ) : (
@@ -169,20 +116,24 @@ const ContactForm = () => {
           </div>
 
           {/* Carrusel */}
-          <div className="carousel-container col-lg-6">
-            <div id="carouselExample" className="carousel slide" data-bs-ride="carousel">
+          <div className="col-12 col-lg-6">
+            <div className="carousel-container position-relative">
               <div className="carousel-inner rounded shadow-sm">
                 {images.map((img, idx) => (
-                  <div className={`carousel-item ${idx === 0 ? "active" : ""}`} key={idx}>
+                  <div
+                    key={idx}
+                    className={`carousel-item ${idx === currentSlide ? "active" : ""}`}
+                    style={{ display: idx === currentSlide ? "block" : "none" }}
+                  >
                     <img src={img} className="d-block w-100" alt={`Evento ${idx + 1}`} />
                   </div>
                 ))}
               </div>
-              <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <button className="carousel-control-prev" type="button" onClick={prevSlide} style={{ position: "absolute", top: "50%", left: 0 }}>
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Anterior</span>
               </button>
-              <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <button className="carousel-control-next" type="button" onClick={nextSlide} style={{ position: "absolute", top: "50%", right: 0 }}>
                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Siguiente</span>
               </button>
