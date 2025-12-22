@@ -87,5 +87,5 @@ app.post("/api/contact", async (req, res) => {
 app.get("/", (req, res) => res.send("Backend funcionando ✅"));
 
 app.listen(PORT, () =>
-  console.log(`Server running on port ${PORT}`)
+console.log(`Server running on port ${PORT}`)
 );
