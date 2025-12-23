@@ -4,7 +4,6 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import mysql from "mysql2/promise";
 import nodemailer from "nodemailer";
 
 const app = express();
@@ -13,34 +12,17 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Función para crear conexión a MySQL
-const connectToDB = async () => {
-  try {
-    const db = await mysql.createConnection({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
-    });
-    console.log("Conexión a MySQL establecida ✅");
-    return db;
-  } catch (error) {
-    console.error("Error de conexión a la base de datos:", error);
-    throw error;
-  }
-};
-
-// Configuración de correo usando SMTP seguro
+// Configuración de correo
 const transporter = nodemailer.createTransport({
   host: "smtp.hostinger.com",
   port: 587,
-  secure: false, // SSL
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS, // contraseña de aplicación si Gmail tiene 2FA
+    pass: process.env.EMAIL_PASS,
   },
   tls: {
-    rejectUnauthorized: false, // IGNORA el certificado autofirmado
+    rejectUnauthorized: false, // ignora certificados autofirmados
   },
 });
 
@@ -48,24 +30,8 @@ const transporter = nodemailer.createTransport({
 app.post("/api/contact", async (req, res) => {
   const { nombre, email, telefono, tipoEvento, cantidad, descripcion } = req.body;
 
-  let db;
   try {
-    // Crear conexión por request
-    db = await connectToDB();
-
-    // Guardar en BD
-    await db.execute(
-      `INSERT INTO contactos 
-       (nombre, email, telefono, tipo_evento, cantidad_personas, descripcion)
-       VALUES (?, ?, ?, ?, ?, ?)`,
-      [nombre, email, telefono, tipoEvento, cantidad, descripcion]
-    );
-
-    // Responder al frontend inmediatamente
-    res.json({ success: true, message: "Solicitud recibida correctamente" });
-
-    // Enviar correo en segundo plano
-    transporter.sendMail({
+    await transporter.sendMail({
       from: `"Event Design" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
       replyTo: email,
@@ -79,14 +45,13 @@ app.post("/api/contact", async (req, res) => {
         <p><strong>Cantidad de personas:</strong> ${cantidad}</p>
         <p><strong>Descripción:</strong> ${descripcion}</p>
       `,
-    }).then(() => console.log("Correo enviado ✅"))
-      .catch(err => console.error("Error enviando correo:", err));
+    });
 
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: "Error al procesar la solicitud" });
-  } finally {
-    if (db) await db.end(); // cerrar conexión
+    res.json({ success: true, message: "Correo enviado correctamente ✅" });
+
+  } catch (err) {
+    console.error("Error enviando correo:", err);
+    res.status(500).json({ success: false, message: "Error enviando correo ❌" });
   }
 });
 
@@ -96,7 +61,7 @@ app.get("/test-email", async (req, res) => {
     await transporter.sendMail({
       from: `"Event Design" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
-      subject: "Prueba de correo desde Render",
+      subject: "Prueba de correo",
       html: "<h1>Esto es una prueba de correo ✅</h1>",
     });
     res.send("Correo enviado correctamente ✅");

@@ -51,21 +51,27 @@ const ContactForm = () => {
     setLoading(true);
 
     try {
-fetch("https://event-design-backend.onrender.com/api/contact", {
+      const response = await fetch("https://event-design-backend.onrender.com/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
       });
 
-      setSubmitted(true);
-      setFormData({
-        nombre: "",
-        email: "",
-        telefono: "",
-        tipoEvento: "",
-        cantidad: "",
-        descripcion: ""
-      });
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        setFormData({
+          nombre: "",
+          email: "",
+          telefono: "",
+          tipoEvento: "",
+          cantidad: "",
+          descripcion: ""
+        });
+      } else {
+        alert("Error al enviar la solicitud: " + data.message);
+      }
     } catch (error) {
       console.error(error);
       alert("Error al enviar la solicitud. Intenta de nuevo.");
