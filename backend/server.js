@@ -33,7 +33,7 @@ const connectToDB = async () => {
 // Configuración de correo usando SMTP seguro
 const transporter = nodemailer.createTransport({
   host: "smtp.hostinger.com",
-  port: 465,
+  port: 587,
   secure: true, // SSL
   auth: {
     user: process.env.EMAIL_USER,
