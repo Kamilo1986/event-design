@@ -9,7 +9,8 @@ import nodemailer from "nodemailer";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors(origin => origin === "https://proyecto-integrador-3-aa6i.onrender.com"
+));
 app.use(bodyParser.json());
 
 // Configuración SMTP Hostinger SSL (puerto 465)
@@ -27,6 +28,7 @@ const transporter = nodemailer.createTransport({
 
 // Endpoint contacto
 app.post("/api/contact", async (req, res) => {
+console.log("Formulario recibido:", req.body);
   const { nombre, email, telefono, tipoEvento, cantidad, descripcion } = req.body;
 
   try {
