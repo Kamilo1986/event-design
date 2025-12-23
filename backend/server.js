@@ -15,8 +15,8 @@ app.use(bodyParser.json());
 // Configuración SMTP Hostinger SSL (puerto 465)
 const transporter = nodemailer.createTransport({
   host: "smtp.hostinger.com",
-  port: 587,       // Importante: 587 con TLS
-  secure: false,   // false para TLS, true sería para SSL 465
+  port: 587,     
+  secure: false,   
   auth: {
     user: "contacto@eventdesign.com.co",
     pass: process.env.EMAIL_PASS, // tu contraseña real
