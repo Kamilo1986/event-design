@@ -34,10 +34,13 @@ const connectToDB = async () => {
 const transporter = nodemailer.createTransport({
   host: "smtp.hostinger.com",
   port: 587,
-  secure: true, // SSL
+  secure: false, // SSL
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS, // contraseña de aplicación si Gmail tiene 2FA
+  },
+  tls: {
+    rejectUnauthorized: false, // IGNORA el certificado autofirmado
   },
 });
 
