@@ -15,45 +15,52 @@ app.use(bodyParser.json());
 // Configuración SMTP Hostinger SSL (puerto 465)
 const transporter = nodemailer.createTransport({
   host: "smtp.hostinger.com",
-  port: 465,
-  secure: true,
+  port: 587,
+  secure: false, // SSL
   auth: {
-    user: "contacto@eventdesigner.com.co",
-    pass: process.env.EMAIL_PASS,
-  },
+  user: "contacto@eventdesign.com.co",
+    pass: "@Camilo1986",
+}, 
+  tls: {
+    rejectUnauthorized: false // <--- Acepta certificados no verificados
+  }
 });
 
+
 // Endpoint contacto
-app.post("/api/contact", (req, res) => {
+app.post("/api/contact", async (req, res) => {
   const { nombre, email, telefono, tipoEvento, cantidad, descripcion } = req.body;
 
-  // RESPONDE AL FRONTEND INMEDIATAMENTE
-  res.json({ success: true, message: "Solicitud recibida. Gracias!" });
+  try {
+    await transporter.sendMail({
+      from: `"Event Design" <contacto@eventdesign.com.co>`,
+      to: "contacto@eventdesign.com.co",
+      replyTo: email,
+      subject: "Nueva solicitud de cotización",
+      html: `
+        <h2>Solicitud de Cotización</h2>
+        <p><strong>Nombre:</strong> ${nombre}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Teléfono:</strong> ${telefono}</p>
+        <p><strong>Tipo de Evento:</strong> ${tipoEvento}</p>
+        <p><strong>Cantidad de personas:</strong> ${cantidad}</p>
+        <p><strong>Descripción:</strong> ${descripcion}</p>
+      `,
+    });
 
-  // Envía el correo en segundo plano
-  transporter.sendMail({
-    from: `"Event Design" <contacto@eventdesigner.com.co>`,
-    to: "contacto@eventdesigner.com.co",
-    replyTo: email,
-    subject: "Nueva solicitud de cotización",
-    html: `
-      <h2>Solicitud de Cotización</h2>
-      <p><strong>Nombre:</strong> ${nombre}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Teléfono:</strong> ${telefono}</p>
-      <p><strong>Tipo de Evento:</strong> ${tipoEvento}</p>
-      <p><strong>Cantidad de personas:</strong> ${cantidad}</p>
-      <p><strong>Descripción:</strong> ${descripcion}</p>
-    `,
-  }).then(() => console.log("Correo enviado ✅"))
-    .catch(err => console.error("Error enviando correo:", err));
+    res.json({ success: true, message: "Correo enviado correctamente ✅" });
+
+  } catch (err) {
+    console.error("Error enviando correo:", err);
+    res.status(500).json({ success: false, message: "Error enviando correo ❌" });
+  }
 });
 
 // Endpoint de prueba rápida
 app.get("/test-email", (req, res) => {
   transporter.sendMail({
-    from: `"Event Design" <contacto@eventdesigner.com.co>`,
-    to: "contacto@eventdesigner.com.co",
+    from: `"Event Design" <contacto@eventdesign.com.co>`,
+    to: "contacto@eventdesign.com.co",
     subject: "Prueba SMTP Hostinger",
     html: "<h1>Esto es una prueba ✅</h1>",
   }).then(() => res.send("Correo enviado correctamente ✅"))
