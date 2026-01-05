@@ -100,19 +100,67 @@ const ContactForm = () => {
           {/* Formulario */}
           <div className="col-12 col-lg-5">
             {!submitted ? (
-              <form className="contact-form" onSubmit={handleSubmit}>
-                <input type="text" name="nombre" value={formData.nombre} onChange={handleChange} className="premium-input mb-3" placeholder="Nombre" required />
-                <input type="email" name="email" value={formData.email} onChange={handleChange} className="premium-input mb-3" placeholder="Email" required />
-                <input type="tel" name="telefono" value={formData.telefono} onChange={handleChange} className="premium-input mb-3" placeholder="Teléfono" required />
-                <input type="text" name="tipoEvento" value={formData.tipoEvento} onChange={handleChange} className="premium-input mb-3" placeholder="Tipo de evento" required />
-                <input type="number" name="cantidad" value={formData.cantidad} onChange={handleChange} className="premium-input mb-3" placeholder="Cantidad de personas" />
-                <textarea name="descripcion" value={formData.descripcion} onChange={handleChange} className="premium-input mb-3" placeholder="Descripción del evento" rows="4"></textarea>
-                <div className="text-center">
-                  <button type="submit" className="btn-olive w-100" disabled={loading}>
-                    {loading ? "Enviando..." : "Enviar solicitud"}
-                  </button>
-                </div>
-              </form>
+              <form
+  className="contact-form"
+  action="https://formsubmit.co/contacto@eventdesign.com.co"
+  method="POST"
+>
+  {/* Seguridad y configuración */}
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_next" value="https://eventdesign.com.co/gracias" />
+
+  <input
+    type="text"
+    name="nombre"
+    className="premium-input mb-3"
+    placeholder="Nombre"
+    required
+  />
+
+  <input
+    type="email"
+    name="email"
+    className="premium-input mb-3"
+    placeholder="Email"
+    required
+  />
+
+  <input
+    type="tel"
+    name="telefono"
+    className="premium-input mb-3"
+    placeholder="Teléfono"
+    required
+  />
+
+  <input
+    type="text"
+    name="tipoEvento"
+    className="premium-input mb-3"
+    placeholder="Tipo de evento"
+    required
+  />
+
+  <input
+    type="number"
+    name="cantidad"
+    className="premium-input mb-3"
+    placeholder="Cantidad de personas"
+  />
+
+  <textarea
+    name="descripcion"
+    className="premium-input mb-3"
+    placeholder="Descripción del evento"
+    rows="4"
+  ></textarea>
+
+  <button type="submit" className="btn-olive w-100">
+    Enviar solicitud
+  </button>
+</form>
+
             ) : (
               <div className="thank-you-message text-center p-4 fade-in">
                 <h3>¡Gracias por tu solicitud!</h3>
