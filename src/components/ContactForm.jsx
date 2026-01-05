@@ -59,73 +59,30 @@ const ContactForm = () => {
             {!submitted ? (
               <>
                 <form
-                  className="contact-form"
-                  action="https://formsubmit.co/contacto@eventdesign.com.co"
-                  method="POST"
-                  target="hidden_iframe"
-                  onSubmit={() => setSubmitted(true)}
-                >
-                  {/* Configuración FormSubmit */}
-                  <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_template" value="table" />
+  className="contact-form"
+  action="https://formsubmit.co/contacto@eventdesign.com.co"
+  method="POST"
+  target="hidden_iframe"
+  onSubmit={() => setSubmitted(true)}
+>
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_subject" value="Nueva cotización - Event Design" />
 
-                  <input
-                    type="text"
-                    name="nombre"
-                    className="premium-input mb-3"
-                    placeholder="Nombre"
-                    required
-                  />
+  <input name="nombre" className="premium-input mb-3" placeholder="Nombre" required />
+  <input type="email" name="email" className="premium-input mb-3" placeholder="Email" required />
+  <input name="telefono" className="premium-input mb-3" placeholder="Teléfono" required />
+  <input name="tipoEvento" className="premium-input mb-3" placeholder="Tipo de evento" required />
+  <input type="number" name="cantidad" className="premium-input mb-3" placeholder="Cantidad de personas" />
+  <textarea name="descripcion" className="premium-input mb-3" placeholder="Descripción del evento" rows="4" />
 
-                  <input
-                    type="email"
-                    name="email"
-                    className="premium-input mb-3"
-                    placeholder="Email"
-                    required
-                  />
+  <button type="submit" className="btn-olive w-100">
+    Enviar solicitud
+  </button>
+</form>
 
-                  <input
-                    type="tel"
-                    name="telefono"
-                    className="premium-input mb-3"
-                    placeholder="Teléfono"
-                    required
-                  />
+<iframe name="hidden_iframe" style={{ display: "none" }} />
 
-                  <input
-                    type="text"
-                    name="tipoEvento"
-                    className="premium-input mb-3"
-                    placeholder="Tipo de evento"
-                    required
-                  />
-
-                  <input
-                    type="number"
-                    name="cantidad"
-                    className="premium-input mb-3"
-                    placeholder="Cantidad de personas"
-                  />
-
-                  <textarea
-                    name="descripcion"
-                    className="premium-input mb-3"
-                    placeholder="Descripción del evento"
-                    rows="4"
-                  />
-
-                  <button type="submit" className="btn-olive w-100">
-                    Enviar solicitud
-                  </button>
-                </form>
-
-                {/* Iframe oculto para evitar redirección */}
-                <iframe
-                  name="hidden_iframe"
-                  style={{ display: "none" }}
-                  title="hidden_iframe"
-                />
               </>
             ) : (
               <div className="thank-you-message text-center p-4 fade-in">
