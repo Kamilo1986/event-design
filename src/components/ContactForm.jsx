@@ -60,7 +60,7 @@ const ContactForm = () => {
               <>
                 <form
   className="contact-form"
-  action="https://formsubmit.co/contacto@eventdesign.com.co"
+  action="https://formsubmit.co/capitanmeseros2017@gmail.com"
   method="POST"
   target="hidden_iframe"
   onSubmit={() => setSubmitted(true)}
