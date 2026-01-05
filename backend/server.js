@@ -19,16 +19,20 @@ app.use(cors({
 
 app.use(bodyParser.json());
 
-// Configuración SMTP Hostinger SSL (puerto 465)
+// Configuración SMTP Hostinger tls (puerto 587)
 const transporter = nodemailer.createTransport({
   host: "smtp.hostinger.com",
-  Port: 465,     
-  secure: true,   
+  port: 587,
+  secure: false, // IMPORTANTE
   auth: {
     user: "contacto@eventdesign.com.co",
-    pass: process.env.EMAIL_PASS, // tu contraseña real
+    pass: process.env.EMAIL_PASS,
+  },
+  tls: {
+    rejectUnauthorized: false,
   },
 });
+
 transporter.verify((error, success) => {
   if (error) {
     console.error("❌ Error SMTP:", error);
