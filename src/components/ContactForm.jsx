@@ -29,57 +29,17 @@ const images = [
 ];
 
 const ContactForm = () => {
-  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0); // Carrusel
-  const [formData, setFormData] = useState({
-    nombre: "",
-    email: "",
-    telefono: "",
-    tipoEvento: "",
-    cantidad: "",
-    descripcion: ""
-  });
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  // Carrusel
+  const prevSlide = () =>
+    setCurrentSlide(prev => (prev === 0 ? images.length - 1 : prev - 1));
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  const nextSlide = () =>
+    setCurrentSlide(prev => (prev === images.length - 1 ? 0 : prev + 1));
 
-    try {
-      const response = await fetch("https://event-design-backend.onrender.com/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setSubmitted(true);
-        setFormData({
-          nombre: "",
-          email: "",
-          telefono: "",
-          tipoEvento: "",
-          cantidad: "",
-          descripcion: ""
-        });
-      } else {
-        alert("Error al enviar la solicitud: " + data.message);
-      }
-    } catch (error) {
-      console.error(error);
-      alert("Error al enviar la solicitud. Intenta de nuevo.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  // Oculta el mensaje luego de 5 segundos (opcional)
   useEffect(() => {
     if (submitted) {
       const timer = setTimeout(() => setSubmitted(false), 5000);
@@ -87,83 +47,89 @@ const ContactForm = () => {
     }
   }, [submitted]);
 
-  // Funciones del carrusel
-  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  const nextSlide = () => setCurrentSlide((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-
   return (
     <section id="contact" className="contact-section py-5">
       <div className="container">
         <h2 className="contact-title text-center mb-5">Cotiza tu Evento</h2>
+
         <div className="row justify-content-center align-items-start gap-4">
 
           {/* Formulario */}
           <div className="col-12 col-lg-5">
             {!submitted ? (
-              <form
-  className="contact-form"
-  action="https://formsubmit.co/contacto@eventdesign.com.co"
-  method="POST"
->
-  {/* Seguridad y configuración */}
-  <input type="hidden" name="_captcha" value="false" />
-  <input type="hidden" name="_template" value="table" />
-  <input type="hidden" name="_next" value="https://eventdesign.com.co/gracias" />
+              <>
+                <form
+                  className="contact-form"
+                  action="https://formsubmit.co/contacto@eventdesign.com.co"
+                  method="POST"
+                  target="hidden_iframe"
+                  onSubmit={() => setSubmitted(true)}
+                >
+                  {/* Configuración FormSubmit */}
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
 
-  <input
-    type="text"
-    name="nombre"
-    className="premium-input mb-3"
-    placeholder="Nombre"
-    required
-  />
+                  <input
+                    type="text"
+                    name="nombre"
+                    className="premium-input mb-3"
+                    placeholder="Nombre"
+                    required
+                  />
 
-  <input
-    type="email"
-    name="email"
-    className="premium-input mb-3"
-    placeholder="Email"
-    required
-  />
+                  <input
+                    type="email"
+                    name="email"
+                    className="premium-input mb-3"
+                    placeholder="Email"
+                    required
+                  />
 
-  <input
-    type="tel"
-    name="telefono"
-    className="premium-input mb-3"
-    placeholder="Teléfono"
-    required
-  />
+                  <input
+                    type="tel"
+                    name="telefono"
+                    className="premium-input mb-3"
+                    placeholder="Teléfono"
+                    required
+                  />
 
-  <input
-    type="text"
-    name="tipoEvento"
-    className="premium-input mb-3"
-    placeholder="Tipo de evento"
-    required
-  />
+                  <input
+                    type="text"
+                    name="tipoEvento"
+                    className="premium-input mb-3"
+                    placeholder="Tipo de evento"
+                    required
+                  />
 
-  <input
-    type="number"
-    name="cantidad"
-    className="premium-input mb-3"
-    placeholder="Cantidad de personas"
-  />
+                  <input
+                    type="number"
+                    name="cantidad"
+                    className="premium-input mb-3"
+                    placeholder="Cantidad de personas"
+                  />
 
-  <textarea
-    name="descripcion"
-    className="premium-input mb-3"
-    placeholder="Descripción del evento"
-    rows="4"
-  ></textarea>
+                  <textarea
+                    name="descripcion"
+                    className="premium-input mb-3"
+                    placeholder="Descripción del evento"
+                    rows="4"
+                  />
 
-  <button type="submit" className="btn-olive w-100">
-    Enviar solicitud
-  </button>
-</form>
+                  <button type="submit" className="btn-olive w-100">
+                    Enviar solicitud
+                  </button>
+                </form>
 
+                {/* Iframe oculto para evitar redirección */}
+                <iframe
+                  name="hidden_iframe"
+                  style={{ display: "none" }}
+                  title="hidden_iframe"
+                />
+              </>
             ) : (
               <div className="thank-you-message text-center p-4 fade-in">
-                <h3>¡Gracias por tu solicitud!</h3>
+                <h3>¡Gracias por tu solicitud! 🎉</h3>
                 <p>Pronto nos pondremos en contacto contigo.</p>
               </div>
             )}
@@ -179,17 +145,31 @@ const ContactForm = () => {
                     className={`carousel-item ${idx === currentSlide ? "active" : ""}`}
                     style={{ display: idx === currentSlide ? "block" : "none" }}
                   >
-                    <img src={img} className="d-block w-100" alt={`Evento ${idx + 1}`} />
+                    <img
+                      src={img}
+                      className="d-block w-100"
+                      alt={`Evento ${idx + 1}`}
+                    />
                   </div>
                 ))}
               </div>
-              <button className="carousel-control-prev" type="button" onClick={prevSlide} style={{ position: "absolute", top: "50%", left: 0 }}>
-                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Anterior</span>
+
+              <button
+                className="carousel-control-prev"
+                type="button"
+                onClick={prevSlide}
+                style={{ position: "absolute", top: "50%", left: 0 }}
+              >
+                <span className="carousel-control-prev-icon" />
               </button>
-              <button className="carousel-control-next" type="button" onClick={nextSlide} style={{ position: "absolute", top: "50%", right: 0 }}>
-                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Siguiente</span>
+
+              <button
+                className="carousel-control-next"
+                type="button"
+                onClick={nextSlide}
+                style={{ position: "absolute", top: "50%", right: 0 }}
+              >
+                <span className="carousel-control-next-icon" />
               </button>
             </div>
           </div>
