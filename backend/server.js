@@ -9,21 +9,34 @@ import nodemailer from "nodemailer";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors(origin => origin === "https://proyecto-integrador-3-aa6i.onrender.com"
-));
+app.use(cors({
+  origin: [
+    "https://eventdesign.com.co",
+    "https://www.eventdesign.com.co",
+    "https://proyecto-integrador-3-aa6i.onrender.com"
+  ]
+}));
+
 app.use(bodyParser.json());
 
 // Configuración SMTP Hostinger SSL (puerto 465)
 const transporter = nodemailer.createTransport({
-  Host: "smtp.hostinger.com",
-  Puerto: 465,     
+  host: "smtp.hostinger.com",
+  Port: 465,     
   secure: true,   
   auth: {
     user: "contacto@eventdesign.com.co",
     pass: process.env.EMAIL_PASS, // tu contraseña real
   },
-  tls: { rejectUnauthorized: false }, // permite certificados auto-firmados
 });
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("❌ Error SMTP:", error);
+  } else {
+    console.log("✅ SMTP listo para enviar correos");
+  }
+});
+
 
 
 // Endpoint contacto
