@@ -1,11 +1,21 @@
 import "../styles/Navbar.css";
+
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg fixed-top navbar-olive">
-      <div className="container">
-        <a className="navbar-brand fw-bold text-white" href="#">
-          Event Design
-        </a>
+      <div className="container navbar-container">
+
+        {/* Logo + Brand */}
+        <div className="d-flex align-items-center gap-3">
+          <img
+            src="/logo event designblanco2.jpeg"
+            alt="Logo Event Design"
+            className="navbar-logo"
+          />
+          <a className="navbar-brand fw-semibold text-white m-0" href="#">
+            Event Design
+          </a>
+        </div>
 
         <button
           className="navbar-toggler"
@@ -17,15 +27,20 @@ const Navbar = () => {
         </button>
 
         <div className="collapse navbar-collapse" id="nav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-4 mt-3 mt-lg-0">
             <li className="nav-item">
-              <a className="nav-link text-white" href="#services">Servicios</a>
+              <a className="nav-link text-white" href="#services">
+                Servicios
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-white" href="#contact">Contacto</a>
+              <a className="nav-link text-white" href="#contact">
+                Contacto
+              </a>
             </li>
           </ul>
         </div>
+
       </div>
     </nav>
   );

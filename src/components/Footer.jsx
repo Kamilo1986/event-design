@@ -10,7 +10,7 @@ const Footer = () => {
 
         {/* Información de contacto */}
         <p className="mb-1">
-          📧 <a href="mailto:contacto@eventdesigner.com.co" className="text-light text-decoration-none">contacto@eventdesigner.com.co</a> <br />
+          📧 <a href="mailto:contacto@eventdesign.com.co" className="text-light text-decoration-none">contacto@eventdesign.com.co</a> <br />
           📞 <a href="tel:+573151138422" className="text-light text-decoration-none">315 113 8422</a>
         </p>
 

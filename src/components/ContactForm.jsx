@@ -2,31 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../styles/ContactForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import eventImages from "../assets/data/eventImages";
 
-// Imágenes
-import hero1 from "../assets/hero1.jpeg";
-import hero2 from "../assets/hero2.jpeg";
-import hero3 from "../assets/hero3.jpeg";
-import hero4 from "../assets/hero4.jpeg";
-import hero5 from "../assets/hero5.jpeg";
-import hero6 from "../assets/hero6.jpeg";
-import hero7 from "../assets/hero7.jpeg";
-import hero8 from "../assets/hero8.jpeg";
-import hero9 from "../assets/hero9.jpeg";
-import hero10 from "../assets/hero10.jpeg";
-import hero11 from "../assets/hero11.jpeg";
-import hero12 from "../assets/hero12.jpeg";
-import hero13 from "../assets/hero13.jpeg";
-import hero14 from "../assets/hero14.jpeg";
-import hero15 from "../assets/hero15.jpeg";
-import hero16 from "../assets/hero16.jpeg";
-import hero17 from "../assets/hero17.jpeg";
-import hero18 from "../assets/hero18.jpeg";
-
-const images = [
-  hero1, hero2, hero3, hero4, hero5, hero6, hero7, hero8, hero9,
-  hero10, hero11, hero12, hero13, hero14, hero15, hero16, hero17, hero18
-];
 
 const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -88,6 +65,16 @@ const ContactForm = () => {
       return () => clearTimeout(timer);
     }
   }, [submitted]);
+  useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentSlide(prev =>
+      prev === eventImages.length - 1 ? 0 : prev + 1
+    );
+  }, 8000); // cambia cada 3 segundos
+
+  return () => clearInterval(interval);
+}, []);
+
 
   return (
     <section id="contact" className="contact-section py-5">
@@ -118,10 +105,32 @@ const ContactForm = () => {
             )}
           </div>
 
-          <div className="col-12 col-lg-6">
-            <img src={images[currentSlide]} className="w-100 rounded" alt="Evento" />
-          </div>
+         <div className="col-12 col-lg-6 d-flex justify-content-center align-items-center">
+  <div
+    style={{
+      width: "450px",
+      height: "300px",
+      overflow: "hidden",
+      borderRadius: "12px",
+      backgroundColor: "#f8f8f8"
+    }}
+  >
+    {eventImages.length > 0 && (
+  <img
+    src={eventImages[currentSlide]}
+    alt="Evento"
+    className="rounded shadow"
+    style={{
+      width: "100%",
+      maxWidth: "450px",
+      height: "300px",
+      objectFit: "cover"
+    }}
+  />
+)}
 
+  </div>
+</div>
         </div>
       </div>
     </section>
