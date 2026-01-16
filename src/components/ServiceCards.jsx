@@ -7,7 +7,7 @@ const servicesData = [
     title: "🥐 Desayunos",
     description: "Desayunos corporativos con presentación premium.",
     images: Array.from({ length: 4 }, (_, i) =>
-      new URL(`../assets/services/desayunos/desayuno${i+1}.jpg`, import.meta.url).href
+      new URL(`../assets/services/Desayunos/desayuno${i+1}.jpg`, import.meta.url).href
     ),
     whatsappMessage: "Hola, quiero cotizar un Desayuno  🎁"
   },
@@ -16,7 +16,7 @@ const servicesData = [
     title: "🥟 Pasabocas",
     description: "Pasabocas gourmet ideales para tus eventos.",
     images: Array.from({ length: 4 }, (_, i) =>
-      new URL(`../assets/services/pasabocas/pasabocas${i+1}.jpg`, import.meta.url).href
+      new URL(`../assets/services/Pasabocas/pasabocas${i+1}.jpg`, import.meta.url).href
     ),
     whatsappMessage: "Hola, quiero cotizar Pasabocas para un evento 🎉"
   },
@@ -25,7 +25,7 @@ const servicesData = [
     title: "🍽️ Experiencias Gastronómicas",
     description: "Menús exclusivos diseñados por chefs profesionales.",
     images: Array.from({ length: 4 }, (_, i) =>
-      new URL(`../assets/services/gastro/gastro${i+1}.jpg`, import.meta.url).href
+      new URL(`../assets/services/Gastro/gastro${i+1}.jpg`, import.meta.url).href
     ),
     whatsappMessage: "Hola, quiero una Experiencia Gastronómica 🍷"
   },
@@ -33,7 +33,7 @@ const servicesData = [
     id: 4,
     title: "🍸 Coctelería",
     images: Array.from({ length: 4 }, (_, i) =>
-      new URL(`../assets/services/coctel/coctel${i+1}.jpg`, import.meta.url).href
+      new URL(`../assets/services/Coctel/coctel${i+1}.jpg`, import.meta.url).href
     ),
     description: "Mixologia y Bar móvil premium para tus celebraciones.",
     whatsappMessage: "Hola, quiero cotizar servicio de Coctelería 🍸"
@@ -42,7 +42,7 @@ const servicesData = [
     id: 5,
     title: "☕ Experiencias de Café",
     images: Array.from({ length: 4 }, (_, i) =>
-      new URL(`../assets/services/cafe/cafe${i+1}.jpg`, import.meta.url).href
+      new URL(`../assets/services/Cafe/cafe${i+1}.jpg`, import.meta.url).href
     ),
     description: "Catas y Estaciones de café especial.",
     whatsappMessage: "Hola, quiero una Experiencia de Café ☕"
@@ -51,7 +51,7 @@ const servicesData = [
     id: 6,
     title: "🏢 Corporativo",
     images: Array.from({ length: 4 }, (_, i) =>
-      new URL(`../assets/services/corporativo/corporativo${i+1}.jpg`, import.meta.url).href
+      new URL(`../assets/services/Corporativo/corporativo${i+1}.jpg`, import.meta.url).href
     ),
     description: "Servicios gastronómicos empresariales premium.",
     whatsappMessage: "Hola, quiero cotizar un evento Corporativo 🏢"
