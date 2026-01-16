@@ -16,7 +16,7 @@ const Footer = () => {
 
         {/* Redes sociales */}
         <div className="mb-2">
-          <a href="https://instagram.com/eventdesigner" target="_blank" rel="noopener noreferrer" className="text-light mx-2 fs-4">
+          <a href="https://www.instagram.com/eventdesign.em?igsh=cjh4M2F5YzRwNWsz" target="_blank" rel="noopener noreferrer" className="text-light mx-2 fs-4">
             <FaInstagram />
           </a>
           <a href="https://facebook.com/eventdesigner" target="_blank" rel="noopener noreferrer" className="text-light mx-2 fs-4">

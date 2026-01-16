@@ -1,13 +1,8 @@
 import "../styles/Hero.css";
-
-const heroImages = Array.from({ length: 18 }, (_, i) =>
-  new URL(`../assets/hero${i + 1}.jpeg`, import.meta.url).href
-);
-
+import heroImages from "../assets/hero/hero.js"; 
 const Hero = () => {
   return (
     <section className="hero">
-      {/* Carrusel */}
       <div
         id="heroCarousel"
         className="carousel slide carousel-fade hero-carousel"
@@ -32,17 +27,14 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Contenido */}
       <div className="hero-content">
         <div className="hero-inner">
           <h1 className="hero-title">
             Diseñamos experiencias inolvidables
           </h1>
-
           <p className="hero-subtitle">
             Eventos corporativos, sociales y personalizados
           </p>
-
           <a href="#contact" className="hero-btn">
             Cotiza tu evento
           </a>

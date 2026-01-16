@@ -1,0 +1,123 @@
+.card-content {
+  padding: 20px;
+  animation: fadeSlide 0.5s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Carrusel */
+.carousel-box {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.carousel-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: zoom 6s ease infinite;
+}
+
+@keyframes zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+.servicecards-section {
+  background: linear-gradient(to bottom, #0b0b0b, #111);
+  padding: 80px 0;
+}
+
+.servicecards-wrapper {
+  max-width: 1200px;   /* 👈 limita el ancho */
+  margin: 0 auto;       /* 👈 centra */
+  padding: 0 20px;      /* 👈 margen lateral */
+}
+
+.servicecards-section h2 {
+  text-align: center;
+  color: var(--light);
+  margin-bottom: 50px;
+  background: radial-gradient(circle at top, #1a1a1a, #0b0b0b);
+}
+
+/* Tarjeta principal */
+.card-box {
+  background: #151515;
+  border-radius: 14px;
+  padding: 0;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.card-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+/* Header clickable */
+.card-header {
+  background: linear-gradient(to right, #1f1f1f, #121212);
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h5 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-header span {
+  color: #9ac23c; /* oliva */
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Contenido animado */
+.fade-in {
+  animation: fadeSlide 0.4s ease;
+}
+
+/* Texto descripción */
+.card-content p {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+/* Botón WhatsApp */
+.btn-whatsapp {
+  display: inline-block;
+  background: linear-gradient(to right, #25d366, #1ebe57);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+  color: white;
+}
+

@@ -1,0 +1,71 @@
+.about-section {
+  background: linear-gradient(to bottom, var(--dark), #0b0b0b);
+  padding: 90px 0;
+  color: var(--light);
+}
+
+.about-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--olive-600);
+  margin-bottom: 10px;
+}
+
+.about-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  opacity: 0.85;
+}
+
+.about-text p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-cards {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.about-card {
+  background: linear-gradient(
+    to bottom,
+    var(--olive-900),
+    var(--olive-800)
+  );
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card h3 {
+  color: var(--light);
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+.about-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.about-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+}

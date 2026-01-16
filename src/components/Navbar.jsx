@@ -8,7 +8,7 @@ const Navbar = () => {
         {/* Logo + Brand */}
         <div className="d-flex align-items-center gap-3">
           <img
-            src="/logo event designblanco2.jpeg"
+            src="/logo event designblanco2.png"
             alt="Logo Event Design"
             className="navbar-logo"
           />

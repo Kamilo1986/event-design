@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/ContactForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import eventImages from "../assets/data/eventImages";
+import eventImages from "../assets/utils/eventImages.js";
 
 
 const ContactForm = () => {
@@ -41,6 +40,14 @@ const ContactForm = () => {
 
       if (data.success) {
         setSubmitted(true);
+        // 🔹 Disparar conversión Google Ads
+  if (window.gtag) {
+    window.gtag('event', 'conversion', {
+      send_to: 'AW-17856491630/7Pl1CMqOhYbEO7g0cJC',
+      value: 1.0,
+      currency: 'COP'
+    });
+  }
         setFormData({
           nombre: "",
           email: "",

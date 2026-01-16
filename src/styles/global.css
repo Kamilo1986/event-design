@@ -34,3 +34,10 @@ button {
   font-family: inherit;
   cursor: pointer;
 }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--dark);
+  color: var(--light);
+}
