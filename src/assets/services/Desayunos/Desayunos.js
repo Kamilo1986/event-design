@@ -1,5 +1,6 @@
-const Desayunos = Array.from({ length: 4 }, (_, i) =>
-  new URL(`./desayunos${i + 1}.jpeg`, import.meta.url).href
-);
+import des1 from "./desayuno1.jpg";
+import des2 from "./desayuno2.jpg";
+import des3 from "./desayuno3.jpg";
+import des4 from "./desayuno4.jpg";
 
-export default Desayunos;
+export default [des1, des2, des3, des4];
