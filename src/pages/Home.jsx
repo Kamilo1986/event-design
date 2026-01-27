@@ -7,6 +7,7 @@ import WhatsappButton from '../components/WhatsappButton'
 import Footer from '../components/Footer'
 import About from "../components/About";
 import VideoSection from "../components/VideoSection";
+import QRBanner from "../components/QRBanner";
 
 
 const Home = () => {
@@ -20,6 +21,7 @@ return (
     <About />
     <ContactForm />
     <WhatsappButton />
+    <QRBanner />
     <Footer />
     
     </>

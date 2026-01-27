@@ -1,0 +1,87 @@
+.qr-banner {
+  position: relative;
+  background: radial-gradient(circle at top, #111, #050505);
+  padding: 80px 20px;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Fondo partículas */
+.particles {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#ffffff22 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: moveParticles 20s linear infinite;
+  z-index: 1;
+}
+
+@keyframes moveParticles {
+  from { background-position: 0 0; }
+  to { background-position: 200px 200px; }
+}
+
+/* Contenido encima de partículas */
+.qr-content {
+  position: relative;
+  z-index: 2;
+}
+
+.qr-content h2 {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.qr-content p {
+  color: #aaa;
+  margin-bottom: 50px;
+}
+
+/* Grid */
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Tarjetas QR */
+.qr-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 18px;
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Animación scroll */
+.qr-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Imagen */
+.qr-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* Texto */
+.qr-card span {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #111;
+}
+
+/* ✨ Brillo neón hover */
+.qr-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 
+    0 0 10px #00f6ff,
+    0 0 20px #00f6ff,
+    0 0 40px #00f6ff;
+}
