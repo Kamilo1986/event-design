@@ -15,58 +15,50 @@ import qr11 from "../assets/Qr/qr11.jpeg";
 import qr12 from "../assets/Qr/qr12.jpeg";
 
 const qrData = [
-  { img: qr1,  label: "Instagram", link: "https://instagram.com/eventdesign" },
-  { img: qr2,  label: "Facebook",  link: "https://facebook.com/eventdesign" },
-  { img: qr3,  label: "WhatsApp",  link: "https://wa.me/573151138422" },
-  { img: qr4,  label: "Catálogo",  link: "https://eventdesign.com.co/catalogo" },
-  { img: qr5,  label: "Portafolio", link: "https://eventdesign.com.co/portafolio" },
-  { img: qr6,  label: "TikTok", link: "https://tiktok.com/@eventdesign" },
-  { img: qr7,  label: "YouTube", link: "https://youtube.com/@eventdesign" },
-  { img: qr8,  label: "Pinterest", link: "https://pinterest.com/eventdesign" },
-  { img: qr9,  label: "Formulario", link: "https://eventdesign.com.co/contacto" },
-  { img: qr10, label: "Ubicación", link: "https://goo.gl/maps/xxxx" },
-  { img: qr11, label: "Reservas", link: "https://eventdesign.com.co/reservas" },
-  { img: qr12, label: "Email", link: "mailto:contacto@eventdesigner.com.co" }
+  { img: qr1,  label: "", link: "https://qr.link/xXZdzj" },
+  { img: qr2,  label: "",  link: "https://qr.link/Fuvb1Y" },
+  { img: qr3,  label: "",  link: "https://qr.link/GBNhLE" },
+  { img: qr4,  label: "",  link: "https://qr.codes/HX2mOK" },
+  { img: qr5,  label: "", link: "https://qr.codes/VhdBrT" },
+  { img: qr6,  label: "", link: "https://qr.link/gtydvN" },
+  { img: qr7,  label: "", link: "https://qr.codes/bv3Z71" },
+  { img: qr8,  label: "", link: "https://qr.link/04fatp" },
+  { img: qr9,  label: "", link: "https://qr.link/cfmPkM" },
+  { img: qr10, label: "", link: "https://experienciabrunchtipico.my.canva.site/brochure-events-design" },
+  { img: qr11, label: "", link: "https://qr.codes/YBSGyo" },
+  { img: qr12, label: "", link: "https://qr.codes/ncAe6S" }
 ];
 
+
 const QRBanner = () => {
-
-  // Animación suave al hacer scroll
-  useEffect(() => {
-    const cards = document.querySelectorAll(".qr-card");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
-      });
-    }, { threshold: 0.2 });
-
-    cards.forEach(card => observer.observe(card));
-  }, []);
-
   return (
     <section className="qr-banner">
 
-      {/* Fondo de partículas */}
+      {/* Fondo partículas */}
       <div className="particles"></div>
 
       <div className="qr-content">
         <h2>Conéctate con Event Design</h2>
-        <p>Escanea o haz clic en nuestros códigos QR</p>
+        <p>Escanea o haz clic en nuestros QR</p>
 
-        <div className="qr-grid">
-          {qrData.map((qr, index) => (
-            <a key={index} href={qr.link} target="_blank" rel="noreferrer">
-              <div className="qr-card">
-                <img src={qr.img} alt={qr.label} />
-                <span>{qr.label}</span>
-              </div>
-            </a>
-          ))}
+        {/* Carrusel infinito */}
+        <div className="qr-carousel">
+          <div className="qr-track">
+            {[...qrData, ...qrData].map((qr, index) => (
+              <a
+                key={index}
+                href={qr.link}
+                target="_blank"
+                rel="noreferrer"
+                className="qr-card"
+              >
+                <img src={qr.img} alt="QR Event Design" />
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
 
+      </div>
     </section>
   );
 };

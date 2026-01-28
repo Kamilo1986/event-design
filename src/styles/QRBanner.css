@@ -1,9 +1,11 @@
 .qr-banner {
   position: relative;
-  background: radial-gradient(circle at top, #111, #050505);
-  padding: 80px 20px;
+  padding:20px 0px;
+  background: #050505;
   overflow: hidden;
   text-align: center;
+  color: white;
+  min-height: 50px; /* 👈 asegura espacio suficiente */
 }
 
 /* Fondo partículas */
@@ -13,75 +15,118 @@
   background-image: radial-gradient(#ffffff22 1px, transparent 1px);
   background-size: 40px 40px;
   animation: moveParticles 20s linear infinite;
-  z-index: 1;
+  z-index: 0;
 }
 
 @keyframes moveParticles {
   from { background-position: 0 0; }
-  to { background-position: 200px 200px; }
+  to { background-position: 400px 400px; }
 }
 
-/* Contenido encima de partículas */
 .qr-content {
   position: relative;
   z-index: 2;
 }
 
 .qr-content h2 {
-  color: #fff;
+
   font-size: 2.5rem;
   margin-bottom: 10px;
 }
 
 .qr-content p {
-  color: #aaa;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
+  opacity: 0.8;
 }
 
-/* Grid */
-.qr-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 30px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-/* Tarjetas QR */
-.qr-card {
-  background: #fff;
-  padding: 15px;
-  border-radius: 18px;
-  transition: all 0.4s ease;
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-/* Animación scroll */
-.qr-card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Imagen */
-.qr-card img {
+/* Carrusel */
+.qr-carousel {
+  overflow: hidden;
   width: 100%;
-  border-radius: 12px;
+  padding-bottom: 40px; /* 👈 evita que corte sombras */
 }
 
-/* Texto */
-.qr-card span {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-  color: #111;
+/* Track en movimiento */
+.qr-track {
+  display: flex;
+  gap: 200px; /* 👈 separación solicitada */
+  width: max-content;
+  margin-top: 40px;
+  animation: scrollQR 40s linear infinite;
 }
 
-/* ✨ Brillo neón hover */
+/* Pausa al pasar mouse */
+.qr-carousel:hover .qr-track {
+  animation-play-state: paused;
+}
+
+/* Tarjeta redonda grande */
+.qr-card {
+  width:300px;
+  height: 300px;
+  border-radius: 50%;
+  background: #0f0f0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 18px #00ffd5aa;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+.qr-card img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  border-radius: 30%;
+}
+
+/* Hover glow */
 .qr-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 
-    0 0 10px #00f6ff,
-    0 0 20px #00f6ff,
-    0 0 40px #00f6ff;
+  transform: scale(1.15);
+  box-shadow: 0 0 25px #00ffd5, 0 0 50px #00ffd5;
 }
+
+/* Animación infinita */
+@keyframes scrollQR {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (max-width: 768px) {
+
+  .qr-banner {
+    padding: 40px 0;
+    min-height: 350px; /* más alto para que no corte */
+  }
+
+  .qr-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .qr-content p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .qr-carousel {
+    padding-bottom: 20px;
+  }
+
+  .qr-track {
+    gap: 80px; /* separación proporcional en móvil */
+    animation-duration: 30s; /* un poco más rápido en móvil */
+  }
+
+  .qr-card {
+    width: 140px;
+    height: 140px;
+    box-shadow: 0 0 12px #00ffd5aa;
+  }
+
+  .qr-card img {
+    width: 72%;
+    height: 72%;
+  }
+}
+
+
