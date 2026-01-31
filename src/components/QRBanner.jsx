@@ -11,22 +11,20 @@ import qr7 from "../assets/Qr/qr7.jpeg";
 import qr8 from "../assets/Qr/qr8.jpeg";
 import qr9 from "../assets/Qr/qr9.jpeg";
 import qr10 from "../assets/Qr/qr10.jpeg";
-import qr11 from "../assets/Qr/qr11.jpeg";
 import qr12 from "../assets/Qr/qr12.jpeg";
 
 const qrData = [
-  { img: qr1,  label: "", link: "https://qr.link/xXZdzj" },
-  { img: qr2,  label: "",  link: "https://qr.link/Fuvb1Y" },
-  { img: qr3,  label: "",  link: "https://qr.link/GBNhLE" },
-  { img: qr4,  label: "",  link: "https://qr.codes/HX2mOK" },
-  { img: qr5,  label: "", link: "https://qr.codes/VhdBrT" },
-  { img: qr6,  label: "", link: "https://qr.link/gtydvN" },
-  { img: qr7,  label: "", link: "https://qr.codes/bv3Z71" },
-  { img: qr8,  label: "", link: "https://qr.link/04fatp" },
-  { img: qr9,  label: "", link: "https://qr.link/cfmPkM" },
-  { img: qr10, label: "", link: "https://experienciabrunchtipico.my.canva.site/brochure-events-design" },
-  { img: qr11, label: "", link: "https://qr.codes/YBSGyo" },
-  { img: qr12, label: "", link: "https://qr.codes/ncAe6S" }
+  { img: qr1,  label: "SABORES DEL DESIERTO", link: "https://tinyurl.com/m2wnkma6" },
+  { img: qr2,  label: "ARROCES INTERNACIONALES",  link: "https://tinyurl.com/Arroces-internacionales" },
+  { img: qr3,  label: "ASIA",  link: "https://tinyurl.com/mu4xphaa" },
+  { img: qr4,  label: "MEDITERRANEA",  link: "https://tinyurl.com/5385kbm6" },
+  { img: qr5,  label: "BRUNCH TIPICO", link: "https://tinyurl.com/brunchtipico" },
+  { img: qr6,  label: "MEXICO LINDO Y QUERIDO", link: "https://tinyurl.com/4kp2dcr7" },
+  { img: qr7,  label: "PIZZAS Y PASTAS", link: "https://tinyurl.com/362nnrc7" },
+  { img: qr8,  label: "GRILL A TODO FUEGO", link: "https://tinyurl.com/y9cctnwt" },
+  { img: qr9,  label: "MIXOLOGIA", link: "https://tinyurl.com/yxcanhcy" },
+  { img: qr10, label: "GASTRODRINKS", link: "https://tinyurl.com/3yrs9wpw" },
+  { img: qr12, label: "COFFEE EXPERIENCE", link: "https://tinyurl.com/2hdajzj6" }
 ];
 
 
@@ -45,15 +43,18 @@ const QRBanner = () => {
         <div className="qr-carousel">
           <div className="qr-track">
             {[...qrData, ...qrData].map((qr, index) => (
-              <a
-                key={index}
-                href={qr.link}
-                target="_blank"
-                rel="noreferrer"
-                className="qr-card"
-              >
-                <img src={qr.img} alt="QR Event Design" />
-              </a>
+<a
+  key={index}
+  href={qr.link}
+  target="_blank"
+  rel="noreferrer"
+  className="qr-card"
+>
+  <span className="qr-label">{qr.label}</span>
+  <img src={qr.img} alt={qr.label} />
+</a>
+
+
             ))}
           </div>
         </div>

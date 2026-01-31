@@ -39,12 +39,13 @@
   opacity: 0.8;
 }
 
-/* Carrusel */
 .qr-carousel {
   overflow: hidden;
   width: 100%;
-  padding-bottom: 40px; /* 👈 evita que corte sombras */
+  padding-bottom: 40px;
+  padding-top: 90px; /* ✅ ESPACIO PARA LOS LABELS */
 }
+
 
 /* Track en movimiento */
 .qr-track {
@@ -60,9 +61,8 @@
   animation-play-state: paused;
 }
 
-/* Tarjeta redonda grande */
 .qr-card {
-  width:300px;
+  width: 300px;
   height: 300px;
   border-radius: 50%;
   background: #0f0f0f;
@@ -72,7 +72,11 @@
   box-shadow: 0 0 18px #00ffd5aa;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   flex-shrink: 0;
+
+  position: relative;
+  overflow: visible;
 }
+
 
 .qr-card img {
   width: 70%;
@@ -86,6 +90,29 @@
   transform: scale(1.15);
   box-shadow: 0 0 25px #00ffd5, 0 0 50px #00ffd5;
 }
+
+.qr-label {
+  position: absolute;
+  top: -55px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+
+  color: #ffffffcc;
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+
+  text-shadow: 
+    0 0 6px #00ffd5aa,
+    0 0 14px #00ffd566;
+
+  pointer-events: none;
+}
+
 
 /* Animación infinita */
 @keyframes scrollQR {
