@@ -20,8 +20,8 @@ const qrData = [
   { img: qr4,  label: "MEDITERRANEA",  link: "https://tinyurl.com/5385kbm6" },
   { img: qr5,  label: "BRUNCH TIPICO", link: "https://tinyurl.com/brunchtipico" },
   { img: qr6,  label: "MEXICO LINDO Y QUERIDO", link: "https://tinyurl.com/4kp2dcr7" },
-  { img: qr7,  label: "PIZZAS Y PASTAS", link: "https://tinyurl.com/362nnrc7" },
-  { img: qr8,  label: "GRILL A TODO FUEGO", link: "https://tinyurl.com/y9cctnwt" },
+  { img: qr7,  label: "LA DOLCE VITA TE ESPERA", link: "https://tinyurl.com/362nnrc7" },
+  { img: qr8,  label: "EL ARTE A LA PARRILLA", link: "https://tinyurl.com/y9cctnwt" },
   { img: qr9,  label: "MIXOLOGIA", link: "https://tinyurl.com/yxcanhcy" },
   { img: qr10, label: "GASTRODRINKS", link: "https://tinyurl.com/3yrs9wpw" },
   { img: qr12, label: "COFFEE EXPERIENCE", link: "https://tinyurl.com/2hdajzj6" }
