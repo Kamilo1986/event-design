@@ -136,7 +136,7 @@
   }
 
   .qr-carousel {
-    padding-bottom: 20px;
+    padding-bottom: 60px;
   }
 
   .qr-track {
@@ -153,6 +153,14 @@
   .qr-card img {
     width: 72%;
     height: 72%;
+  }
+  .qr-label {
+    top: -35px;              /* baja el label para que no choque */
+    font-size: 0.65rem;      /* texto más pequeño */
+    letter-spacing: 1.5px;  /* menos espacio entre letras */
+    text-shadow: 
+      0 0 4px #00ffd5aa,
+      0 0 8px #00ffd566;
   }
 }
 

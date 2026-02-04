@@ -23,7 +23,7 @@ const qrData = [
   { img: qr7,  label: "LA DOLCE VITA TE ESPERA", link: "https://tinyurl.com/362nnrc7" },
   { img: qr8,  label: "EL ARTE A LA PARRILLA", link: "https://tinyurl.com/y9cctnwt" },
   { img: qr9,  label: "MIXOLOGIA", link: "https://tinyurl.com/yxcanhcy" },
-  { img: qr10, label: "GASTRODRINKS", link: "https://tinyurl.com/3yrs9wpw" },
+  { img: qr10, label: "GASTRO-DRINKS", link: "https://tinyurl.com/3yrs9wpw" },
   { img: qr12, label: "COFFEE EXPERIENCE", link: "https://tinyurl.com/2hdajzj6" }
 ];
 
