@@ -16,14 +16,15 @@ const WhatsappButton = () => {
 
   return (
     <a 
-      href="https://wa.me/573151138422"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="whatsapp"
-      onClick={handleWhatsappClick}
-    >
-      <FaWhatsapp />
-    </a>
+  href="https://wa.me/573151138422?text=Hola%2C%20quiero%20cotizar%20un%20evento%20empresarial.%20%C2%BFMe%20pueden%20enviar%20opciones%20y%20precios%3F"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="whatsapp"
+  onClick={handleWhatsappClick}
+>
+  <FaWhatsapp />
+</a>
+
   );
 };
 

@@ -36,8 +36,8 @@ const QRBanner = () => {
       <div className="particles"></div>
 
       <div className="qr-content">
-        <h2>Conéctate con Event Design</h2>
-        <p>Escanea o haz clic en nuestros QR</p>
+        <h2> Quieres conocer mas sobre nosotros? </h2>
+        <p>👇Escanea o haz clic en nuestros QR👇</p>
 
         {/* Carrusel infinito */}
         <div className="qr-carousel">

@@ -7,7 +7,7 @@ const VideoSection = () => {
       <div className="video-wrapper">
 
         <h2 className="video-title">
-          Vive la experiencia Event Design
+          Así diseñamos experiencias para empresasVive la experiencia Event Design
         </h2>
 
         <div className="video-frame">

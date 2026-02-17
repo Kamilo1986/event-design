@@ -13,7 +13,7 @@ const Navbar = () => {
             className="navbar-logo"
           />
           <a className="navbar-brand fw-semibold text-white m-0" href="#">
-            Event Design
+            DISEÑO DE EXPERIENCIAS GASTRONÓMICAS CORPORATIVAS PREMIUM
           </a>
         </div>
 

@@ -30,13 +30,13 @@ const Hero = () => {
       <div className="hero-content">
         <div className="hero-inner">
           <h1 className="hero-title">
-            Diseñamos experiencias inolvidables
+            Diseñamos experiencias gastronómicas y corporativas que elevan marcas
           </h1>
           <p className="hero-subtitle">
-            Eventos corporativos, sociales y personalizados
+            Eventos corporativos Premium
           </p>
           <a href="#contact" className="hero-btn">
-            Cotiza tu evento
+            Agenda asesoría estratégica.
           </a>
         </div>
       </div>
