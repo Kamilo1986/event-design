@@ -5,17 +5,18 @@ export default function About() {
     <section className="about-section" id="about">
       <div className="about-wrapper">
 
-        <h2 className="about-title">Event Design</h2>
+        <h2 className="about-title">Diseño y producción estratégica de experiencias empresariales</h2>
         <p className="about-subtitle">
           Producción estratégica de eventos corporativos y experiencias premium en Bogotá
         </p>
 
         <div className="about-text">
   <p>
-    <strong>Event Design</strong> es una empresa especializada en diseño y producción de eventos corporativos,
-    experiencias gastronómicas y producciones de gran formato en Bogotá. 
-    Contamos con más de 20 años de experiencia creando eventos que fortalecen marcas,
-    generan posicionamiento y elevan la percepción de las compañías ante sus clientes.
+    <strong>Event Design</strong>  Es una empresa especializada en producción de eventos
+y experiencias gastronómicas premium. Con más de 20 años de trayectoria,
+creamos proyectos que fortalecen marcas, generan posicionamiento y elevan
+la percepción de las compañías ante sus audiencias.
+
   </p>
 
   <p>

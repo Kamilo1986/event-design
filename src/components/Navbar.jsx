@@ -2,19 +2,27 @@ import "../styles/Navbar.css";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg fixed-top navbar-olive">
+    <nav
+      className="navbar navbar-expand-lg fixed-top navbar-olive"
+      role="navigation"
+      aria-label="Menú principal"
+    >
       <div className="container navbar-container">
 
-        {/* Logo + Brand */}
         <div className="d-flex align-items-center gap-3">
           <img
-            src="/logo event designblanco2.png"
-            alt="Logo Event Design"
+            src="/logoeventdesignblanco2.png"
+            alt="Event Design - Catering y producción gastronómica"
             className="navbar-logo"
           />
-          <a className="navbar-brand fw-semibold text-white m-0" href="#">
-            DISEÑO DE EXPERIENCIAS GASTRONÓMICAS CORPORATIVAS PREMIUM
-          </a>
+          <div className="d-flex flex-column">
+    <a className="navbar-brand fw-semibold text-white m-0" href="/">
+      Event-Design
+    </a>
+    <span className="brand-subtext">
+      Catering & Producción Gastronómica
+    </span>
+  </div>
         </div>
 
         <button
@@ -22,6 +30,7 @@ const Navbar = () => {
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#nav"
+          aria-label="Abrir menú"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -33,9 +42,21 @@ const Navbar = () => {
                 Servicios
               </a>
             </li>
+
+            <li className="nav-item">
+              <a className="nav-link text-white" href="#about">
+                Quienes somos
+              </a>
+            </li>
+             <li className="nav-item">
+              <a className="nav-link text-white" href="#QRBanner">
+                Catalogo inmersivo
+              </a>
+            </li>
+
             <li className="nav-item">
               <a className="nav-link text-white" href="#contact">
-                Contacto
+                Cotizar Evento
               </a>
             </li>
           </ul>

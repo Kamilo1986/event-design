@@ -1,3 +1,7 @@
+/* ==============================
+   SERVICE CARDS
+============================== */
+
 .service-card {
   border: none;
   border-radius: 16px;
@@ -8,9 +12,43 @@
   );
   box-shadow: 0 10px 30px #0000001a;
   transition: transform .3s ease, box-shadow .3s ease;
+
+  /* 🔥 IMPORTANTE */
+  height: 100%;
+  display: flex;
 }
 
 .service-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+}
+
+/* 🔥 Hace que el contenido interno se distribuya vertical */
+.service-card .card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* 🔥 Empuja el texto inferior hacia abajo */
+.service-card small {
+  margin-top: auto;
+  font-weight: 500;
+  transition: transform .3s ease, opacity .3s ease;
+}
+
+/* ✨ Micro efecto elegante */
+.service-card:hover small {
+  transform: translateX(6px);
+  opacity: 0.85;
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 768px) {
+  .service-card {
+    margin-bottom: 20px;
+  }
 }

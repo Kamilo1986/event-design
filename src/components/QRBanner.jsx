@@ -30,7 +30,7 @@ const qrData = [
 
 const QRBanner = () => {
   return (
-    <section className="qr-banner">
+    <section id="QRBanner" className="qr-banner">
 
       {/* Fondo partículas */}
       <div className="particles"></div>

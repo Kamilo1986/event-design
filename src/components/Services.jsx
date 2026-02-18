@@ -4,19 +4,20 @@ const services = [
   {
     title: "Experiencias Gastronómicas para Eventos Corporativos",
     description:
-      "Creamos propuestas culinarias únicas que elevan cada evento a una experiencia memorable.",
+      "Desarrollamos experiencias gastronómicas corporativas diseñadas para fortalecer la imagen de marca y generar recordación en eventos empresariales y activaciones estratégicas."
+,
       whatsappMessage: "Hola, quiero más información sobre sus Experiencias Gastronómicas."
   },
   {
     title: "Organización de Eventos Corporativos en Bogotá",
     description:
-      "Diseñamos y producimos eventos empresariales que fortalecen la marca y generan impacto.",
+      "Diseñamos y producimos eventos corporativos en Bogotá para empresas y marcas que buscan impacto estratégico, posicionamiento y experiencias memorables.",
   whatsappMessage: "Hola, quiero más información sobre sus Eventos Corporativos."
     },
   {
     title: "Producción de Eventos Empresariales y Megaeventos",
     description:
-      "Producción integral de gran escala con logística, montaje y ejecución de alto nivel.",
+      "Ofrecemos producción integral de eventos empresariales y megaeventos con logística avanzada, montaje profesional y ejecución de alto nivel para marcas y compañías.",
   whatsappMessage: "Hola, quiero más información sobre Producción Empresarial y Megaeventos."
   }
 ];
@@ -46,11 +47,15 @@ window.dataLayer.push({
 
   return (
     <section id="services" className="container-fluid py-5">
-      <h2 className="text-center mb-4">Nuestros Servicios</h2>
+      <h2 className="text-center mb-4">Servicios de Catering y producción de eventos corporativos en Bogotá</h2>
+<p className="seo-hidden">
+Empresa especializada en eventos corporativos, activaciones de marca,
+producción empresarial y experiencias gastronómicas premium en Bogotá.
+</p>
 
       <div className="row g-4">
         {services.map((service) => (
-          <div className="col-md-4" key={service.title}>
+          <div className="col-12 col-md-4" key={service.title}>
             
             <div 
               className="card service-card text-center"
@@ -58,11 +63,10 @@ window.dataLayer.push({
               onClick={() => handleWhatsappClick(service)}
             >
               <div className="card-body">
-                <h5>{service.title}</h5>
+                <h3>{service.title}</h3>
                 <p>{service.description}</p>
                 <small style={{ opacity: 0.7 }}>
                   Hablar con asesor especializado →
-
                 </small>
               </div>
             </div>

@@ -30,8 +30,6 @@
 <meta name="geo.region" content="CO-DC" />
 <meta name="geo.placename" content="Bogotá" />
 
-<link rel="preload" as="image" href="/herologo1.jpeg" fetchpriority="high" type="image/jpeg">
-
 
 <!-- ⭐ SCHEMA SEO CORPORATIVO -->
 <script type="application/ld+json">
@@ -66,13 +64,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4ZJW7KC');</script>
 <!-- End Google Tag Manager -->
+ <style>
+.seo-hidden {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+</style>
+
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
 <noscript><iframe title="Google Tag Manager" src="https://www.googletagmanager.com/ns.html?id=GTM-M4ZJW7KC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-   <main class="seo-hidden">
+<div class="seo-hidden">
   <h1>Empresa de eventos corporativos y sociales en Bogotá</h1>
   <p>
     Event Design es una empresa especializada en producción de eventos corporativos,
@@ -99,7 +108,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   la imagen de marca y generan recordación.
 </p>
 
-</main>
+  </div>
+
 
     <div id="root"></div>
     <script type="module" src="/src/main.jsx" defer></script>

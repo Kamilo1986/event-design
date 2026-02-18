@@ -1,5 +1,8 @@
 import "../styles/Hero.css";
-import heroImages from "../assets/hero/hero.js"; 
+
+const heroImages = Array.from({ length: 18 }, (_, i) =>
+  `/hero/hero${i + 1}.jpeg`
+);
 
 const Hero = () => {
   return (
@@ -31,8 +34,13 @@ const Hero = () => {
           <h1 className="hero-title">
             Producción de eventos corporativos y experiencias gastronómicas en Bogotá para empresas
           </h1>
+<span className="seo-hidden">
+Producción de eventos empresariales en Bogotá, activaciones de marca,
+eventos corporativos y experiencias gastronómicas premium para empresas.
+</span>
+
           <p className="hero-subtitle">
-            Diseñamos eventos estratégicos para marcas que buscan impacto real.
+            Diseñamos eventos corporativos estratégicos para marcas que buscan impacto real.
           </p>
           <a
   href="#contact"
