@@ -1,7 +1,7 @@
 import "../styles/Hero.css";
 
-const heroImages = Array.from({ length: 18 }, (_, i) =>
-  `/hero/hero${i + 1}.jpeg`
+const heroImages = Array.from({ length:7}, (_, i) =>
+  `/hero/hero${i + 1}.webp`
 );
 
 const Hero = () => {
@@ -21,9 +21,18 @@ const Hero = () => {
               className={`carousel-item ${index === 0 ? "active" : ""}`}
             >
               <div
-                className="hero-slide"
-                style={{ backgroundImage: `url(${img})` }}
-              />
+  className="hero-slide"
+  style={{ backgroundImage: `url(${img})` }}
+>
+  <img
+    src={img}
+    alt="Eventos corporativos en Bogotá"
+    loading={index === 0 ? "eager" : "lazy"}
+    fetchpriority={index === 0 ? "high" : "auto"}
+    style={{ display: "none" }}
+  />
+</div>
+
             </div>
           ))}
         </div>
@@ -31,8 +40,11 @@ const Hero = () => {
 
       <div className="hero-content">
         <div className="hero-inner">
+          <span className="hero-pretitle">
+          Especialistas en eventos corporativos para empresas en Bogotá
+          </span>
           <h1 className="hero-title">
-            Producción de eventos corporativos y experiencias gastronómicas en Bogotá para empresas
+            Eventos corporativos estratégicos en Bogotá que elevan la experiencia de marca
           </h1>
 <span className="seo-hidden">
 Producción de eventos empresariales en Bogotá, activaciones de marca,
@@ -40,12 +52,21 @@ eventos corporativos y experiencias gastronómicas premium para empresas.
 </span>
 
           <p className="hero-subtitle">
-            Diseñamos eventos corporativos estratégicos para marcas que buscan impacto real.
+          Diseñamos, producimos y ejecutamos experiencias corporativas end-to-end que conectan gastronomía, concepto y logística para empresas que buscan resultados reales.
+
           </p>
           <a
   href="#contact"
   className="hero-btn"
-  onClick={() => {
+  onClick={(e) => {
+
+    e.preventDefault();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer?.push({
+      event: 'click_hero_cta'
+    });
+
     if (window.gtag) {
       window.gtag('event', 'click_hero_cta', {
         event_category: 'CTA',
@@ -53,13 +74,13 @@ eventos corporativos y experiencias gastronómicas premium para empresas.
       });
     }
 
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'click_hero_cta'
-    });
+    setTimeout(() => {
+      window.location.href = "#contact";
+    }, 150);
+
   }}
 >
-  Quiero una propuesta para mi evento
+  Solicitar propuesta estratégica
 </a>
 
         </div>
