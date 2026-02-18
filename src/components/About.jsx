@@ -7,46 +7,42 @@ export default function About() {
 
         <h2 className="about-title">Event Design</h2>
         <p className="about-subtitle">
-          Más de 20 años creando experiencias inolvidables
+          Producción estratégica de eventos corporativos y experiencias premium en Bogotá
         </p>
 
         <div className="about-text">
-          <p>
-            <strong>Event Design</strong> es una empresa con más de 20 años de
-            experiencia en la industria de los eventos. Contamos con un equipo
-            creativo y operativo altamente capacitado, capaz de atender hasta
-            10.000 personas con máxima eficiencia, calidad y atención al detalle.
-          </p>
+  <p>
+    <strong>Event Design</strong> es una empresa especializada en diseño y producción de eventos corporativos,
+    experiencias gastronómicas y producciones de gran formato en Bogotá. 
+    Contamos con más de 20 años de experiencia creando eventos que fortalecen marcas,
+    generan posicionamiento y elevan la percepción de las compañías ante sus clientes.
+  </p>
 
-          <p>
-            Nos especializamos en crear <strong>experiencias inmersivas</strong>,
-            donde cada invitado vive momentos memorables. Escuchamos de primera
-            mano las necesidades de nuestros clientes para transformar sus ideas
-            en eventos únicos, elegantes y perfectamente ejecutados.
-          </p>
-        </div>
-
+  <p>
+    Nuestro equipo combina estrategia, creatividad y ejecución operativa para producir
+    eventos memorables con estándares premium. Hemos desarrollado proyectos para eventos
+    empresariales, activaciones de marca, celebraciones corporativas y producciones de alto impacto
+    con capacidad de atención superior a 10.000 asistentes.
+  </p>
+</div>
         <div className="about-cards">
 
           <div className="about-card">
-            <h3>Misión</h3>
-            <p>
-              Transformar los sueños de nuestros clientes en realidades
-              memorables, diseñando y produciendo eventos innovadores que superen
-              expectativas, con excelencia operativa, creatividad constante y
-              atención personalizada.
-            </p>
-          </div>
+    <h3>Enfoque</h3>
+    <p>
+      Diseñamos eventos que no solo celebran, sino que comunican, posicionan y generan
+      resultados para las marcas. Cada proyecto se construye con visión estratégica,
+      estética cuidada y ejecución impecable.
+    </p>
+  </div>
 
-          <div className="about-card">
-            <h3>Visión</h3>
-            <p>
-              Ser la empresa número uno en diseño y producción de eventos,
-              rompiendo esquemas tradicionales y liderando la industria con
-              experiencias impactantes, inmersivas y de alto valor emocional.
-            </p>
-          </div>
-
+  <div className="about-card">
+    <h3>Objetivo</h3>
+    <p>
+      Convertir cada evento en una herramienta de posicionamiento para nuestros clientes,
+      creando experiencias que impacten audiencias, refuercen reputación y generen recordación.
+    </p>
+  </div>
         </div>
       </div>
     </section>

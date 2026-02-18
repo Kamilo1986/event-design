@@ -11,21 +11,24 @@ import QRBanner from "../components/QRBanner";
 
 
 const Home = () => {
-return (
+  return (
     <>
-    <Navbar />
-    <Hero />
-    <Services />
-    <ServiceCards />
-    <VideoSection />
-    <About />
-    <ContactForm />
-    <WhatsappButton />
-    <QRBanner />
-    <Footer />
-    
+      <Navbar />
+
+      <main>
+        <Hero />
+        <Services />
+        <ServiceCards />
+        <VideoSection />
+        <About />
+        <ContactForm />
+      </main>
+
+      <WhatsappButton />
+      <QRBanner />
+      <Footer />
     </>
-)
+  )
 }
 
 export default Home;

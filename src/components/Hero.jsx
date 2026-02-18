@@ -1,8 +1,9 @@
 import "../styles/Hero.css";
 import heroImages from "../assets/hero/hero.js"; 
+
 const Hero = () => {
   return (
-    <section className="hero">
+    <section className="hero" role="banner" aria-label="Producción de eventos corporativos en Bogotá">
       <div
         id="heroCarousel"
         className="carousel slide carousel-fade hero-carousel"
@@ -13,14 +14,12 @@ const Hero = () => {
         <div className="carousel-inner">
           {heroImages.map((img, index) => (
             <div
-              key={img}
+              key={index}
               className={`carousel-item ${index === 0 ? "active" : ""}`}
             >
               <div
                 className="hero-slide"
-                style={{
-                  backgroundImage: `url(${img})`,
-                }}
+                style={{ backgroundImage: `url(${img})` }}
               />
             </div>
           ))}
@@ -30,14 +29,31 @@ const Hero = () => {
       <div className="hero-content">
         <div className="hero-inner">
           <h1 className="hero-title">
-            Diseñamos experiencias gastronómicas y corporativas que elevan marcas
+            Producción de eventos corporativos y experiencias gastronómicas en Bogotá para empresas
           </h1>
           <p className="hero-subtitle">
-            Eventos corporativos Premium
+            Diseñamos eventos estratégicos para marcas que buscan impacto real.
           </p>
-          <a href="#contact" className="hero-btn">
-            Agenda asesoría estratégica.
-          </a>
+          <a
+  href="#contact"
+  className="hero-btn"
+  onClick={() => {
+    if (window.gtag) {
+      window.gtag('event', 'click_hero_cta', {
+        event_category: 'CTA',
+        event_label: 'Hero boton propuesta'
+      });
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'click_hero_cta'
+    });
+  }}
+>
+  Quiero una propuesta para mi evento
+</a>
+
         </div>
       </div>
     </section>

@@ -2,19 +2,19 @@ import "../styles/Services.css";
 
 const services = [
   {
-    title: "Experiencias Gastronómicas",
+    title: "Experiencias Gastronómicas para Eventos Corporativos",
     description:
       "Creamos propuestas culinarias únicas que elevan cada evento a una experiencia memorable.",
       whatsappMessage: "Hola, quiero más información sobre sus Experiencias Gastronómicas."
   },
   {
-    title: "Eventos Corporativos",
+    title: "Organización de Eventos Corporativos en Bogotá",
     description:
       "Diseñamos y producimos eventos empresariales que fortalecen la marca y generan impacto.",
   whatsappMessage: "Hola, quiero más información sobre sus Eventos Corporativos."
     },
   {
-    title: "Producción Empresarial & Megaeventos",
+    title: "Producción de Eventos Empresariales y Megaeventos",
     description:
       "Producción integral de gran escala con logística, montaje y ejecución de alto nivel.",
   whatsappMessage: "Hola, quiero más información sobre Producción Empresarial y Megaeventos."
@@ -32,6 +32,12 @@ const Services = () => {
         'currency': 'COP'
       });
     }
+// Evento para Google Tag Manager
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+  event: 'click_servicio',
+  servicio: service.title
+});
 
     // 👉 Mensaje individual por servicio
     const url = `https://wa.me/573151138422?text=${encodeURIComponent(service.whatsappMessage)}`;
@@ -55,7 +61,8 @@ const Services = () => {
                 <h5>{service.title}</h5>
                 <p>{service.description}</p>
                 <small style={{ opacity: 0.7 }}>
-                  Click para más información →
+                  Hablar con asesor especializado →
+
                 </small>
               </div>
             </div>

@@ -1,57 +1,65 @@
 <?php
-// Permitir solicitudes desde tu web
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
-// Solo aceptar POST
+// Solo POST
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-echo json_encode(["success" => false, "message" => "Método no permitido"]);
-exit;
+    echo json_encode(["success" => false, "message" => "Método no permitido"]);
+    exit;
 }
 
-// Leer datos JSON enviados desde React
+// Leer JSON
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Validar campos obligatorios
-if (
-empty($data["nombre"]) ||
-empty($data["email"]) ||
-empty($data["telefono"])
-) {
-echo json_encode(["success" => false, "message" => "Campos incompletos"]);
-exit;
+if (!$data) {
+    echo json_encode(["success" => false, "message" => "Datos inválidos"]);
+    exit;
 }
 
-// 👉 IMPORTANTE: cambia por tu correo real de Hostinger
+// Limpiar datos
+$nombre = htmlspecialchars(trim($data["nombre"] ?? ""));
+$email = htmlspecialchars(trim($data["email"] ?? ""));
+$telefono = htmlspecialchars(trim($data["telefono"] ?? ""));
+$tipoEvento = htmlspecialchars(trim($data["tipoEvento"] ?? ""));
+$cantidad = htmlspecialchars(trim($data["cantidad"] ?? ""));
+$descripcion = htmlspecialchars(trim($data["descripcion"] ?? ""));
+
+// Validar obligatorios
+if (!$nombre || !$email || !$telefono) {
+    echo json_encode(["success" => false, "message" => "Campos incompletos"]);
+    exit;
+}
+
+// Tu correo real del dominio
 $to = "contacto@eventdesign.com.co";
 
-// Asunto
 $subject = "Nueva solicitud desde la web";
 
-// Contenido del mensaje
+// Mensaje
 $message = "
-📩 Nueva solicitud de contacto
+Nueva solicitud de contacto
 
-Nombre: {$data['nombre']}
-Email: {$data['email']}
-Teléfono: {$data['telefono']}
-Tipo de evento: {$data['tipoEvento']}
-Cantidad de personas: {$data['cantidad']}
+Nombre: $nombre
+Email: $email
+Teléfono: $telefono
+Tipo de evento: $tipoEvento
+Cantidad de personas: $cantidad
 
 Mensaje:
-{$data['descripcion']}
+$descripcion
 ";
 
-// Cabeceras correctas para Hostinger
-$headers = "From: Web Event Design <contacto@eventdesign.com.co>\r\n";
-$headers .= "Reply-To: {$data['email']}\r\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8";
+// Headers correctos
+$headers = "From: contacto@eventdesign.com.co\r\n";
+$headers .= "Reply-To: $email\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-// Enviar correo
+// Enviar
 if (mail($to, $subject, $message, $headers)) {
-echo json_encode(["success" => true, "message" => "Correo enviado"]);
+    echo json_encode(["success" => true, "message" => "Correo enviado"]);
 } else {
-echo json_encode(["success" => false, "message" => "Error al enviar"]);
+    echo json_encode(["success" => false, "message" => "Error al enviar correo"]);
 }
 ?>

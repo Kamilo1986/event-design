@@ -36,9 +36,9 @@ const ContactForm = () => {
         body: JSON.stringify(formData)
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => null);
 
-      if (data.success) {
+      if (data && data.success) {
         setSubmitted(true);
         // 🔹 Disparar conversión Google Ads
   if (window.gtag) {
@@ -48,6 +48,13 @@ const ContactForm = () => {
       currency: 'COP'
     });
   }
+  // 🔹 Evento para Google Tag Manager
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+  event: 'formulario_enviado',
+  formulario: 'contacto_event_design'
+});
+
         setFormData({
           nombre: "",
           email: "",
@@ -77,7 +84,7 @@ const ContactForm = () => {
     setCurrentSlide(prev =>
       prev === eventImages.length - 1 ? 0 : prev + 1
     );
-  }, 8000); // cambia cada 3 segundos
+  }, 8000); // cambia cada 8 segundos
 
   return () => clearInterval(interval);
 }, []);
@@ -86,7 +93,7 @@ const ContactForm = () => {
   return (
     <section id="contact" className="contact-section py-5">
       <div className="container">
-        <h2 className="contact-title text-center mb-5">Cotiza tu Evento</h2>
+        <h2 className="contact-title text-center mb-5">Solicita tu propuesta estratégica de evento</h2>
 
         <div className="row justify-content-center gap-4">
 
@@ -101,8 +108,12 @@ const ContactForm = () => {
                 <textarea name="descripcion" value={formData.descripcion} onChange={handleChange} className="premium-input mb-3" placeholder="Descripción del evento" rows="4" />
 
                 <button type="submit" className="btn-olive w-100" disabled={loading}>
-                  {loading ? "Enviando..." : "Enviar solicitud"}
+                  {loading ? "Enviando..." : "Recibir propuesta personalizada"}
                 </button>
+                <p className="text-center mt-3 small text-muted">
+Respuesta en menos de 24 horas · Asesoría sin costo
+</p>
+
               </form>
             ) : (
               <div className="thank-you-message text-center p-4 fade-in">
