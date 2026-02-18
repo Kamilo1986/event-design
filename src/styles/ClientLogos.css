@@ -1,3 +1,4 @@
+
 .clients-section {
   padding: 100px 0;
   background: #ffffff;
@@ -8,7 +9,7 @@
   font-size: 1.9rem;
   font-weight: 600;
   margin-bottom: 70px;
-  color: #1d1d1d;
+  color: #1f2e02;
 }
 
 /* Slider con fade en bordes */
@@ -71,21 +72,91 @@
     transform: translateX(-50%);
   }
 }
+/* ===== UPGRADE CORPORATIVO SIN ROMPER TU DISEÑO ===== */
 
-/* Responsive */
-@media (max-width: 992px) {
-  .clients-track {
-    gap: 60px;
-  }
+.client-item img {
 
-  .client-item img {
-    max-height: 50px;
-  }
+  /* añadimos estilo corporativo SIN tocar tamaños */
 
-  .client-item.featured img {
-    max-height: 65px;
-  }
+
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease,
+    opacity 0.4s ease;
 }
+
+/* Mantiene tu hover existente pero mejora percepción */
+.client-item:hover img {
+
+  /* respetamos tu escala pero suavizamos */
+  transform: scale(1.08);
+}
+/* ===== AUTHORITY BAR PREMIUM REAL ===== */
+
+.authority-bar {
+
+  margin-top: 70px;
+
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+
+  gap: 30px;
+  flex-wrap: wrap;
+
+}
+
+/* Tarjetas premium suaves */
+.authority-item {
+
+  background: #fafafa;
+
+  padding: 28px 35px;
+
+  border-radius: 12px;
+
+  min-width: 220px;
+
+  transition: all 0.35s ease;
+
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Micro interacción (NO exagerada) */
+.authority-item:hover {
+
+  transform: translateY(-6px);
+
+  background: #ffffff;
+
+  border-color: rgba(0,0,0,0.08);
+
+}
+
+/* Número principal */
+.authority-number {
+
+  font-size: 32px;
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+
+  color: #111;
+
+}
+
+/* Texto secundario */
+.authority-item p {
+
+  margin-top: 8px;
+
+  font-size: 14px;
+
+  color: rgba(0,0,0,0.65);
+
+  line-height: 1.4;
+}
+
 
 @media (max-width: 768px) {
   .clients-track {
@@ -99,4 +170,12 @@
   .client-item.featured img {
     max-height: 55px;
   }
+  .authority-bar {
+    gap: 40px;
+  }
+
+  .authority-number {
+    font-size: 22px;
+  }
+
 }
