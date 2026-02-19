@@ -15,26 +15,17 @@ const Hero = () => {
         data-bs-pause="false"
       >
         <div className="carousel-inner">
-          {heroImages.map((img, index) => (
-            <div
-              key={index}
-              className={`carousel-item ${index === 0 ? "active" : ""}`}
-            >
-              <div
-  className="hero-slide"
-  style={{ backgroundImage: `url(${img})` }}
->
-  <img
-    src={img}
-    alt="Eventos corporativos en Bogotá"
-    loading={index === 0 ? "eager" : "lazy"}
-    fetchpriority={index === 0 ? "high" : "auto"}
-    style={{ display: "none" }}
-  />
-</div>
-
-            </div>
-          ))}
+        {heroImages.map((img, index) => (
+  <div
+    key={index}
+    className={`carousel-item ${index === 0 ? "active" : ""}`}
+  >
+    <div className="hero-slide"
+      style={{ backgroundImage: `url(${img})` }}
+      >
+    </div>
+  </div>
+))}
         </div>
       </div>
 

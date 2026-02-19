@@ -84,7 +84,7 @@ window.dataLayer.push({
     setCurrentSlide(prev =>
       prev === eventImages.length - 1 ? 0 : prev + 1
     );
-  }, 8000); // cambia cada 8 segundos
+  }, 4000); // cambia cada 4 segundos
 
   return () => clearInterval(interval);
 }, []);
