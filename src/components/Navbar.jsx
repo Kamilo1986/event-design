@@ -11,7 +11,7 @@ const Navbar = () => {
 
         <div className="d-flex align-items-center gap-3">
           <img
-            src="/logoeventdesignblanco2.png"
+            src="/logoeventdesignblanco2.webp"
             alt="Event Design - Catering y producción gastronómica"
             className="navbar-logo"
           />

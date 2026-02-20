@@ -1,14 +1,14 @@
 import "../styles/ClientLogos.css";
 
 const clientLogos = [
-  { src: "/clients/logo1.png", featured: true, name: "Cliente corporativo 1" },
-  { src: "/clients/logo2.png", featured: false, name: "Cliente corporativo 2" },
-  { src: "/clients/logo3.png", featured: true, name: "Cliente corporativo 3" },
-  { src: "/clients/logo4.png", featured: false, name: "Cliente corporativo 4" },
-  { src: "/clients/logo5.png", featured: false, name: "Cliente corporativo 5" },
-  { src: "/clients/logo6.png", featured: true, name: "Cliente corporativo 6" },
-  { src: "/clients/logo7.png", featured: false, name: "Cliente corporativo 7" },
-  { src: "/clients/logo8.png", featured: true, name: "Cliente corporativo 8" }
+  { src: "/clients/logo1.webp", featured: true, name: "Cliente corporativo 1" },
+  { src: "/clients/logo2.webp", featured: false, name: "Cliente corporativo 2" },
+  { src: "/clients/logo3.webp", featured: true, name: "Cliente corporativo 3" },
+  { src: "/clients/logo4.webp", featured: false, name: "Cliente corporativo 4" },
+  { src: "/clients/logo5.webp", featured: false, name: "Cliente corporativo 5" },
+  { src: "/clients/logo6.webp", featured: true, name: "Cliente corporativo 6" },
+  { src: "/clients/logo7.webp", featured: false, name: "Cliente corporativo 7" },
+  { src: "/clients/logo8.webp", featured: true, name: "Cliente corporativo 8" }
 ];
 
 export default function ClientLogos() {

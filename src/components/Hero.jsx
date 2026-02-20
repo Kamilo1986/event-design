@@ -1,9 +1,5 @@
 import "../styles/Hero.css";
 
-const heroImages = Array.from({ length: 3 }, (_, i) =>
-  `/hero/hero${i + 1}.webp`
-);
-
 const Hero = () => {
   return (
     <section
@@ -12,26 +8,9 @@ const Hero = () => {
       aria-label="Producción de eventos corporativos en Bogotá"
     >
       <div
-        id="heroCarousel"
-        className="carousel slide carousel-fade hero-carousel"
-        data-bs-ride="carousel"
-        data-bs-interval="4000"
-        data-bs-pause="false"
-      >
-        <div className="carousel-inner">
-          {heroImages.map((img, index) => (
-            <div
-              key={index}
-              className={`carousel-item ${index === 0 ? "active" : ""}`}
-            >
-              <div
-                className="hero-slide"
-                style={{ backgroundImage: `url(${img})` }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+        className="hero-slide"
+        style={{ backgroundImage: "url(/hero/hero1.webp)" }}
+      />
 
       <div className="hero-content">
         <div className="hero-inner">
