@@ -6,8 +6,8 @@ const servicesData = [
     id: 1,
     title: "🥐 Desayunos",
     description: "Servicio de catering para desayunos empresariales con panadería artesanal, opciones saludables y presentación ejecutiva.",
-    images: Array.from({ length: 4 }, (_, i) =>
-      new URL(`../assets/services/Desayunos/desayuno${i+1}.jpg`, import.meta.url).href
+    images: Array.from({ length: 3 }, (_, i) =>
+      new URL(`../assets/services/Desayunos/desayuno${i+1}.webp`, import.meta.url).href
     ),
     whatsappMessage: "Hola, quiero cotizar un Desayuno  🥐"
   },
@@ -15,8 +15,8 @@ const servicesData = [
     id: 2,
     title: "🥟 Pasabocas",
     description: "Selección de pasabocas gourmet y bocados salados ideales para lanzamientos, reuniones y celebraciones empresariales.",
-    images: Array.from({ length: 4 }, (_, i) =>
-      new URL(`../assets/services/Pasabocas/pasabocas${i+1}.jpg`, import.meta.url).href
+    images: Array.from({ length: 3 }, (_, i) =>
+      new URL(`../assets/services/Pasabocas/pasabocas${i+1}.webp`, import.meta.url).href
     ),
     whatsappMessage: "Hola, quiero cotizar Pasabocas para un evento 🥟"
   },
@@ -24,16 +24,16 @@ const servicesData = [
     id: 3,
     title: "🍽️ Catering Premium",
     description: "Propuesta culinaria diseñada por chefs profesionales con estaciones en vivo, menús personalizados y montaje de alto nivel.",
-    images: Array.from({ length: 4 }, (_, i) =>
-      new URL(`../assets/services/Gastro/gastro${i+1}.jpg`, import.meta.url).href
+    images: Array.from({ length: 3 }, (_, i) =>
+      new URL(`../assets/services/Gastro/gastro${i+1}.webp`, import.meta.url).href
     ),
     whatsappMessage: "Hola, quiero una Experiencia Gastronómica 🍽️"
   },
   {
     id: 4,
     title: "🍸 Coctelería",
-    images: Array.from({ length: 4 }, (_, i) =>
-      new URL(`../assets/services/Coctel/coctel${i+1}.jpg`, import.meta.url).href
+    images: Array.from({ length: 3 }, (_, i) =>
+      new URL(`../assets/services/Coctel/coctel${i+1}.webp`, import.meta.url).href
     ),
     description: "Servicio de bar móvil con mixología profesional, cartas personalizadas y montaje premium para eventos sociales y empresariales.",
     whatsappMessage: "Hola, quiero cotizar servicio de Coctelería 🍸"
@@ -41,8 +41,8 @@ const servicesData = [
   {
     id: 5,
     title: "☕ Experiencias de Café",
-    images: Array.from({ length: 4 }, (_, i) =>
-      new URL(`../assets/services/Cafe/cafe${i+1}.jpg`, import.meta.url).href
+    images: Array.from({ length: 3 }, (_, i) =>
+      new URL(`../assets/services/Cafe/cafe${i+1}.webp`, import.meta.url).href
     ),
     description: "Estaciones de café.  con baristas profesionales, métodos artesanales y presentación temática.",
     whatsappMessage: "Hola, quiero una Experiencia de Café ☕"
@@ -50,8 +50,8 @@ const servicesData = [
   {
     id: 6,
     title: "🍴 Servicio Integral ",
-    images: Array.from({ length: 4 }, (_, i) =>
-      new URL(`../assets/services/Corporativo/corporativo${i+1}.jpg`, import.meta.url).href
+    images: Array.from({ length: 3 }, (_, i) =>
+      new URL(`../assets/services/Corporativo/corporativo${i+1}.webp`, import.meta.url).href
     ),
     description: "Planeación y ejecución completa del servicio de catering para eventos de gran formato, incluyendo logística, montaje y coordinación.",
     whatsappMessage: "Hola, quiero cotizar un evento Corporativo 🏢"

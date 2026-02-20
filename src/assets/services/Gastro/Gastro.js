@@ -1,6 +1,5 @@
-import gastro1 from "./gastro1.jpg";
-import gastro2 from "./gastro2.jpg";
-import gastro3 from "./gastro3.jpg";
-import gastro4 from "./gastro4.jpg";
-
-export default [gastro1, gastro2, gastro3, gastro4];
+const images = [gastro1, gastro2, gastro3,];
+{images.map((img, i) => (
+    <img key={i} src={img} loading="lazy" alt="Servicio de catering gastronomico" />
+))}
+export default images

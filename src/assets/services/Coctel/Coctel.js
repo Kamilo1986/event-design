@@ -1,8 +1,6 @@
-import coctel1 from "./coctel1.jpg";
-import coctel2 from "./coctel2.jpg";
-import coctel3 from "./coctel3.jpg";
-import coctel4 from "./coctel4.jpg";
+const images = [coctel1, coctel2, coctel3,];
+{images.map((img, i) => (
+  <img key={i} src={img} loading="lazy" alt="Servicio de coctelería" />
+))}
 
-const coctelImages = [coctel1, coctel2, coctel3, coctel4];
-
-export default coctelImages;
+export default images

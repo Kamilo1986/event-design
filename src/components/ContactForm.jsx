@@ -123,7 +123,7 @@ Respuesta en menos de 24 horas · Asesoría sin costo
             )}
           </div>
 
-         <div className="col-12 col-lg-6 d-flex justify-content-center align-items-center">
+        <div className="col-12 col-lg-6 d-flex justify-content-center align-items-center">
   <div
     style={{
       width: "450px",

@@ -1,23 +1,24 @@
 import "../styles/VideoSection.css";
-import videoFile from "../assets/video/eventdesign.mp4";
 
 const VideoSection = () => {
   return (
-    <section className="video-section">
+    <section id="video" className="video-section">
       <div className="video-wrapper">
 
         <h2 className="video-title">
-          Así diseñamos experiencias para empresas Vive la experiencia Event Design
+          Así diseñamos experiencias para empresas – Vive la experiencia Event Design
         </h2>
 
         <div className="video-frame">
-          <video 
-            src={videoFile}
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+          <video
+            controls
+            preload="metadata"
+            width="100%"
+            poster="/images/video-thumbnail.jpg"
+          >
+            <source src="/video/eventdesign.mp4" type="video/mp4" />
+            Tu navegador no soporta video HTML5.
+          </video>
         </div>
 
       </div>
