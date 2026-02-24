@@ -32,28 +32,23 @@ const Hero = () => {
           </p>
 
           <a
-            href="#contact"
-            className="hero-btn"
-            onClick={(e) => {
-              e.preventDefault();
+  href="#contact"
+  className="hero-btn"
+  onClick={(e) => {
+    e.preventDefault();
 
-              window.dataLayer = window.dataLayer || [];
-              window.dataLayer.push({ event: "click_hero_cta" });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "click_hero_cta"
+    });
 
-              if (window.gtag) {
-                window.gtag("event", "click_hero_cta", {
-                  event_category: "CTA",
-                  event_label: "Hero boton propuesta",
-                });
-              }
-
-              setTimeout(() => {
-                window.location.href = "#contact";
-              }, 150);
-            }}
-          >
-            Solicitar propuesta estratégica
-          </a>
+    setTimeout(() => {
+      window.location.href = "#contact";
+    }, 150);
+  }}
+>
+  Solicitar propuesta estratégica
+</a>
         </div>
       </div>
     </section>
