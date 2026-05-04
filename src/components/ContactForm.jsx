@@ -44,7 +44,11 @@ const ContactForm = () => {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: "formulario_enviado",
-          formulario: "contacto_event_design"
+          formulario: "contacto_event_design",
+          user_data: {
+         email: formData.email.trim().toLowerCase(),
+      phone_number: "+57" + formData.telefono.trim().replace(/\D/g, "")
+}
         });
 
         setFormData({
